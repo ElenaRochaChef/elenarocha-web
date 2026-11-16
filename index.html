@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:url" content="https://elenarocha.es/">
+<link rel="canonical" href="https://elenarocha.es/">
+<style>:root{color-scheme:light;box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Elena Rocha</title>
+<link rel="icon" type="image/png" href="img/poppy.png">
+<meta name="description" content="Elena Rocha, creativa gastronómica. Experiencias gastronómicas donde se conjugan la gastronomía y el arte: mesas efímeras, Brunch de Autora, Mesa de Campo y experiencias a medida para tu evento">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Elena Rocha · Creativa gastronómica">
+<meta property="og:title" content="Elena Rocha · Creativa gastronómica">
+<meta property="og:description" content="Experiencias gastronómicas donde la comida se convierte en una forma de cuidar. Esta vez, déjate cuidar.">
+<meta property="og:image" content="https://elenarocha.es/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500&display=swap" rel="stylesheet">
+<style>
+/* Layout: Inicio = portada a sangre con texto en las esquinas + filas foto/columna estrecha.
+   Proyectos = barra lateral fija + una franja horizontal por proyecto (recuadro + fotos 2:3). */
+:root {
+  color-scheme: light;
+  --paper: #fbf9f1;      /* fondo principal, papel crudo */
+  --card: #f2ecd9;       /* recuadro de proyecto / huecos de foto */
+  --ink: #2a1a22;        /* texto, ciruela casi negra */
+  --muted: #7a6a6f;      /* texto secundario */
+  --poppy: #eb4537;      /* acento amapola, usado con mesura */
+  --sage: #86aa70;       /* verde de marca */
+  --line: rgba(42, 26, 34, .16);
+  --on-photo: #fffaf2;
+  --display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --serif: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --body: 'Arimo', 'Helvetica Neue', Arial, sans-serif;
+  --label: 12.5px;
+  --gutter-l: max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(20px, env(safe-area-inset-right, 0px));
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 1px solid var(--poppy); outline-offset: 3px; }
+img { max-width: 100%; display: block; }
+.lbl { font-family: var(--display); font-size: var(--label); letter-spacing: .12em; text-transform: uppercase; font-weight: 400; line-height: 1.5; }
+.u { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.view[hidden] { display: none !important; }
+.view.enter { animation: viewIn .6s ease both; }
+@keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.fade { opacity: 0; transition: opacity .9s ease; }
+.fade.in { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .view.enter { animation: none; } .fade { opacity: 1; transition: none; } }
+
+/* ---------------- INICIO ---------------- */
+.hero { position: relative; height: min(100svh, 920px); min-height: 560px; overflow: hidden; color: var(--on-photo); background: var(--ink); }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-end { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease; pointer-events: none; }
+.hero-end img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; }
+.hero.done .hero-end { opacity: 1; }
+.hero.done .hero-end img { animation: endbreath 24s ease-in-out 0s infinite alternate; transform-origin: 60% 55%; }
+@keyframes endbreath { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.12) translate(-1.5%, -1.2%); } }
+@media (prefers-reduced-motion: reduce) { .hero.done .hero-end img { animation: none; } }
+@media (max-width: 800px) { .hero-end img { object-position: 45% 50%; } }
+.hero .slides { position: absolute; inset: 0; }
+.hero .slides img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.8s ease; transform: scale(1.04); }
+.hero .slides img.on { opacity: 1; animation: drift 9s linear forwards; }
+@keyframes drift { from { transform: scale(1.04) translate(0,0); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
+@media (prefers-reduced-motion: reduce) { .hero .slides img.on { animation: none; } .hero .slides img { transition: none; } }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,10,14,.35) 0%, rgba(20,10,14,.05) 35%, rgba(20,10,14,.1) 60%, rgba(20,10,14,.55) 100%); pointer-events: none; }
+.hero-in { position: absolute; inset: 0; z-index: 2; padding: max(26px, env(safe-area-inset-top, 0px)) var(--gutter-r) 32px var(--gutter-l); display: grid; grid-template-rows: auto 1fr auto; }
+.brand { display: flex; flex-direction: column; gap: 30px; }
+.brand nav { display: grid; gap: 15px; justify-items: start; line-height: 1.55; }
+.brand nav a { opacity: .85; transition: opacity .2s, color .2s; }
+.brand nav a:hover, .brand nav a[aria-current="page"] { opacity: 1; color: var(--poppy); }
+.hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.hero-id { display: grid; justify-items: end; text-align: right; gap: 6px; }
+.hero-id p { margin: 0; }
+.hero-ghost { visibility: hidden; }
+.hid-name { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1; letter-spacing: -.01em; text-shadow: 0 1px 12px rgba(20, 10, 14, .4); }
+.hid-role { margin-top: 4px !important; }
+.hid-where { opacity: .85; line-height: 1.6; }
+.hid-where .nw { white-space: nowrap; }
+@media (max-width: 600px) { .hid-name { font-size: 26px; } .hero-id { gap: 4px; } .hid-where { font-size: 11px; } }
+.wordmark { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: .95; letter-spacing: -.01em; display: inline-flex; align-items: flex-start; gap: 6px; }
+.wordmark .pop { height: 54px; width: auto; margin-top: -10px; flex: 0 0 auto; transform-origin: 50% 100%; transition: transform .6s ease; }
+.wordmark:hover .pop { transform: rotate(-6deg); }
+@media (prefers-reduced-motion: reduce) { .wordmark .pop { transition: none; } .wordmark:hover .pop { transform: none; } }
+.hero-mid { align-self: center; }
+.nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav a { opacity: .85; transition: opacity .2s; text-shadow: 0 1px 8px rgba(20,10,14,.45); }
+.hero-in .lbl, .hero-pitch p, .hero-in .wordmark { text-shadow: 0 1px 10px rgba(20,10,14,.35); }
+.nav a:hover, .nav a[aria-current="page"] { opacity: 1; }
+.hero-bot { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+.hero-contact { display: grid; gap: 2px; }
+.hero-pitch { max-width: 390px; display: grid; gap: 12px; }
+.hero-pitch .hero-cta-row { margin-top: 8px; }
+.hero-pitch p { margin: 0; font-family: var(--display); font-size: 13px; line-height: 1.45; letter-spacing: .02em; }
+.hero-cta { display: grid; gap: 2px; }
+.dots { display: flex; gap: 6px; }
+.dots span { width: 18px; height: 1px; background: var(--on-photo); opacity: .35; transition: opacity .4s; }
+.dots span.on { opacity: 1; }
+
+.about { padding-block: clamp(80px, 12vw, 150px); padding-left: var(--gutter-l); padding-right: var(--gutter-r); display: grid; gap: clamp(90px, 12vw, 160px); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 260px) minmax(0, 56px) minmax(0, 360px) minmax(0, 1fr); align-items: center; }
+.row .ph { grid-column: 2; aspect-ratio: 4 / 5; width: 100%; object-fit: cover; background: var(--card); }
+.row .tx { grid-column: 4; min-width: 0; }
+.row .tx h2 { margin: 0 0 18px; }
+.prose p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.6; max-width: 34ch; }
+.prose p:last-child { margin-bottom: 0; }
+.prose em { font-style: normal; color: var(--poppy); }
+
+.manifest { padding-block: clamp(70px, 10vw, 130px); padding-left: var(--gutter-l); padding-right: var(--gutter-r); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.manifest blockquote { margin: 0 auto; max-width: 22ch; font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 5.6vw, 84px); line-height: 1.02; letter-spacing: -.015em; text-wrap: balance; text-align: center; display: grid; gap: .45em; }
+.manifest blockquote .ml { display: block; }
+.manifest blockquote em { font-style: italic; }
+.manifest blockquote .acc { color: var(--poppy); }
+.manifest .sig { margin: 30px 0 0; text-align: center; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(18px, 1.6vw, 22px); color: var(--muted); }
+.manifest .lbl { display: block; text-align: center; margin-top: 28px; color: var(--muted); }
+
+.offer { padding-block: clamp(80px, 10vw, 130px); padding-left: var(--gutter-l); padding-right: var(--gutter-r); display: grid; gap: 64px; }
+.offer-grid > .lbl a:hover { color: var(--poppy); }
+.offer-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px) minmax(0, 64px) minmax(0, 300px) minmax(0, 1fr); }
+.offer-grid > .lbl { grid-column: 2; }
+.offer-list { grid-column: 4; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.offer-list li { border-bottom: 1px solid var(--line); }
+.offer-list a { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; font-family: var(--display); font-size: 15px; transition: color .2s, padding .25s; }
+.offer-list a:hover { color: var(--poppy); padding-left: 6px; }
+.offer-list a small { font-family: var(--display); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); align-self: center; text-align: right; }
+
+.voices { padding-block: 0 clamp(90px, 12vw, 150px); padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.voices-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 330px) minmax(0, 64px) minmax(0, 300px) minmax(0, 1fr); row-gap: 44px; }
+.voices-grid figure { margin: 0; min-width: 0; }
+.voices-grid figure:nth-of-type(1) { grid-column: 2; }
+.voices-grid figure:nth-of-type(2) { grid-column: 4; }
+.voices-grid > .lbl { grid-column: 2 / span 3; color: var(--muted); }
+.voices blockquote { margin: 0 0 12px; font-size: 13.5px; line-height: 1.6; }
+.voices figcaption { color: var(--muted); }
+
+.foot { padding: 28px var(--gutter-r) 26px var(--gutter-l); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; align-items: end; border-top: 1px solid var(--line); }
+.foot div { display: grid; gap: 2px; min-width: 0; }
+.foot .sub { font-size: 11.5px; letter-spacing: .1em; color: var(--muted); overflow-wrap: anywhere; }
+.foot .end { text-align: right; justify-items: end; }
+.foot-pj { grid-column: 1 / -1; margin-top: 20px; }
+
+/* ---------------- VISTAS CON BARRA LATERAL ---------------- */
+.pj { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: 100svh; }
+.side { position: sticky; top: env(safe-area-inset-top, 0px); align-self: start; height: 100svh; padding: 26px 20px 24px var(--gutter-l); display: flex; flex-direction: column; gap: 30px; }
+.side .wordmark { font-size: 30px; color: var(--ink); }
+.side nav { display: grid; gap: 15px; justify-items: start; line-height: 1.55; }
+.side nav .sub { display: grid; gap: 3px; padding: 6px 0 10px 10px; }
+.side nav .sub a { font-size: 11.5px; color: var(--muted); transition: color .2s; }
+.side nav .sub a:hover, .side nav .sub a.on { color: var(--poppy); }
+.side nav a.main:hover { color: var(--poppy); }
+.side nav .cur { color: var(--poppy); }
+.side .menu-btn, .side .sub-m { display: none; }
+.side .insta { display: inline-block; margin-top: 0; color: var(--ink); }
+.side .insta:hover { color: var(--poppy); }
+.side .legal-l { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 14px; }
+.side .legal-l a { font-size: 11px; color: var(--muted); }
+.side .legal-l a:hover { color: var(--poppy); }
+
+/* botón de cada mesa: una línea que crece, en la voz de la web */
+.cta { appearance: none; border: 0; background: none; padding: 6px 0; margin-top: 8px; display: inline-flex; align-items: center; gap: 12px; font-family: var(--display); font-size: 15px; font-weight: 400; letter-spacing: -.005em; color: var(--ink); cursor: pointer; text-align: left; transition: color .25s; }
+.cta::before { content: ""; width: 26px; height: 1px; background: currentColor; transition: width .35s ease; flex: 0 0 auto; align-self: flex-start; margin-top: .7em; }
+.cta:hover, .cta[aria-expanded="true"] { color: var(--poppy); }
+.cta:hover::before, .cta[aria-expanded="true"]::before { width: 48px; }
+.cta-panel { display: grid; gap: 8px; padding: 12px 0 2px 38px; font-size: 13.5px; line-height: 1.5; }
+.cta-panel[hidden] { display: none; }
+.cta-panel .row2 { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 8px; }
+.cta-panel .lbl { color: var(--muted); }
+.cta-panel .ph { color: var(--muted); user-select: all; }
+.cta-panel .msg { color: var(--muted); font-style: italic; }
+.cta-panel a.lbl, .talk-alt a.lbl { color: var(--ink); }
+.cta-panel a.lbl:hover, .talk-alt a.lbl:hover { color: var(--poppy); }
+.sel { user-select: all; }
+@media (prefers-reduced-motion: reduce) { .cta, .cta::before { transition: none; } }
+.side .bottom { margin-top: auto; color: var(--muted); }
+.side .bottom p { margin: 0; font-family: var(--display); font-size: 12px; line-height: 1.45; max-width: 22ch; }
+
+.strips { padding: 20px var(--gutter-r) 60px 0; display: grid; gap: 64px; min-width: 0; }
+.strip { min-width: 0; scroll-margin-top: 20px; }
+.track { display: flex; gap: 10px; height: clamp(440px, calc(100svh - 92px), 760px); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: none; cursor: grab; }
+.track::-webkit-scrollbar { display: none; }
+.track.drag { cursor: grabbing; scroll-snap-type: none; }
+.track.drag * { pointer-events: none; }
+.track > * { flex: 0 0 auto; height: 100%; scroll-snap-align: start; }
+.cover { width: clamp(420px, 46vw, 620px); max-width: 100%; background: var(--card); display: grid; grid-template-rows: minmax(0, 1fr); padding: clamp(28px, 3.4vw, 52px); }
+.cover-c { align-self: center; display: grid; gap: 16px; text-align: center; justify-items: center; max-height: 100%; overflow-y: auto; scrollbar-width: none; }
+.cover-c::-webkit-scrollbar { display: none; }
+.cover h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3vw, 44px); line-height: 1.02; text-wrap: balance; }
+.cover .sub2 { margin: -8px 0 0; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.2; white-space: nowrap; max-width: 100%; }
+.cover .tag { font-style: italic; font-size: 15px; color: var(--muted); margin: 0; }
+.cover .desc { font-size: 14px; line-height: 1.6; max-width: 46ch; margin: 4px 0 0; display: grid; gap: 10px; }
+.cover .desc p { margin: 0; }
+.cover .close { margin: 2px 0 0; max-width: 46ch; font-family: var(--serif); font-style: italic; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.3; color: var(--poppy); text-wrap: balance; }
+.cover .q { font-family: var(--display); font-size: 14px; line-height: 1.4; max-width: 32ch; margin: 0; color: var(--poppy); }
+.cover-f { display: flex; justify-content: space-between; color: var(--muted); }
+.shot { aspect-ratio: 2 / 3; background: var(--card); position: relative; overflow: hidden; margin: 0; }
+.shot img, .shot video { width: 100%; height: 100%; object-fit: cover; user-select: none; -webkit-user-drag: none; display: block; }
+.shot.empty { display: grid; place-items: center; background: repeating-linear-gradient(135deg, var(--card) 0 14px, #efe8d3 14px 15px); }
+.shot.empty span { color: var(--muted); text-align: center; background: var(--card); padding: 8px 10px; }
+.ctrl { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; color: var(--muted); }
+.ctrl .arrows { display: flex; gap: 6px; }
+.ctrl button { appearance: none; border: 0; background: transparent; color: var(--muted); width: 28px; height: 24px; font-family: var(--display); font-size: 13px; cursor: pointer; transition: background .2s, color .2s; }
+.ctrl button:hover { color: var(--poppy); }
+.ctrl .count { font-variant-numeric: tabular-nums; }
+
+/* ---------------- SIÉNTATE A LA MESA: filas compactas, texto + tira de fotos ---------------- */
+.mesa { padding: 20px var(--gutter-r) 90px 0; display: grid; min-width: 0; align-content: start; }
+.mesa-head { padding: 6px 0 40px; display: grid; gap: 22px; }
+.mesa-head h1 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 3.2vw, 46px); line-height: 1; letter-spacing: -.01em; }
+.mesa-intro { display: grid; gap: 12px; max-width: 62ch; }
+.mesa-intro p { margin: 0; font-size: 15px; line-height: 1.65; }
+.mesa-intro .lead { font-family: var(--serif); font-size: clamp(21px, 1.9vw, 26px); line-height: 1.25; max-width: 32ch; text-wrap: balance; }
+.mesa-intro .close { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--poppy); }
+.mr { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: clamp(24px, 3vw, 44px); padding-block: 40px; border-top: 1px solid var(--line); align-items: start; }
+.mr-text { display: grid; gap: 10px; align-content: start; }
+.mr-text .lbl { color: var(--muted); }
+.mr-text h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 2.9vw, 42px); line-height: 1; letter-spacing: -.01em; text-wrap: balance; }
+.mr-text .tag { margin: 0; font-style: italic; font-size: 14px; color: var(--muted); }
+.mr-text .desc { margin: 4px 0 0; font-size: 14.5px; line-height: 1.6; }
+.mr-text .q { margin: 2px 0 0; font-family: var(--display); font-size: 13.5px; line-height: 1.4; color: var(--poppy); }
+.mr-film { min-width: 0; }
+.mr .soon { flex: 1 1 auto; width: 100%; background: var(--card); display: grid; place-items: center; cursor: default; }
+.mr .soon img { height: 34%; width: auto; opacity: .85; }
+.mr .track { height: clamp(230px, 27vw, 360px); gap: 8px; }
+.mr .shot { aspect-ratio: 3 / 2; }
+.mr .shot img { transition: transform 1s ease; }
+.mr .shot:hover img { transform: scale(1.03); }
+@media (prefers-reduced-motion: reduce) { .mr .shot img { transition: none; } .mr .shot:hover img { transform: none; } }
+
+/* ---------------- EXPERIENCIAS: noche ciruela (Accent 2 + On accent 1 de la marca original) ---------------- */
+#v-exp { --paper: #1c1714; --ink: #f3ece6; --card: #2a2420; --muted: rgba(243, 233, 236, .62); --line: rgba(243, 236, 230, .16); --poppy: #f07a68; background: var(--paper); color: var(--ink); }
+#v-exp ::selection { background: #f07a68; color: #1c1714; }
+#v-exp .cover { --ink: #2a1a22; --muted: #7a6a6f; --poppy: #b8323a; background: #fbf9f1; color: #2a1a22; }
+#v-exp .shot.empty { background: repeating-linear-gradient(135deg, #24201c 0 14px, #2a2420 14px 15px); }
+#v-exp .shot.empty span { background: transparent; color: var(--muted); }
+
+/* ---------------- LANDING DE CADA MESA ---------------- */
+.land { padding: 20px var(--gutter-r) 40px 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(56px, 7vw, 96px); min-width: 0; align-content: start; }
+.lh { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 60px); align-items: end; }
+.lh-img { aspect-ratio: 4 / 5; max-height: calc(100svh - 40px); overflow: hidden; background: var(--card); }
+.lh-img { position: relative; }
+.snd { position: absolute; right: 12px; bottom: 12px; appearance: none; border: 0; background: rgba(28,23,20,.42); color: var(--on-photo); font: inherit; font-family: var(--display); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 7px 11px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: background .2s; }
+.snd:hover { background: rgba(28,23,20,.62); }
+.snd i { width: 7px; height: 7px; border-radius: 50%; border: 1px solid currentColor; }
+.snd[aria-pressed="true"] i { background: var(--poppy); border-color: var(--poppy); }
+.lh-img img, .lh-img video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lh-txt { display: grid; gap: 18px; justify-items: start; padding-bottom: 8px; }
+.lh-back { color: var(--muted); }
+.lh-back:hover { color: var(--poppy); }
+.lh h1 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(44px, 5.4vw, 80px); line-height: .95; letter-spacing: -.02em; text-wrap: balance; }
+.lh-tag { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.25; color: var(--poppy); max-width: 22ch; text-wrap: balance; }
+.lh .cta { font-size: 17px; }
+.lb { max-width: 62ch; }
+.lb p { margin: 0; font-family: var(--serif); font-size: clamp(21px, 2vw, 27px); line-height: 1.45; }
+.lb-short { display: none; }
+.lp > .lbl, .lw > .lbl, .lc > .lbl, .lo > .lbl { margin: 0 0 18px; color: var(--muted); }
+.lp ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; border-top: 1px solid var(--line); padding-top: 24px; }
+.lp h3 { margin: 0 0 8px; font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.15; }
+.lp li p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted); }
+.lg .track { height: clamp(320px, 42vw, 560px); }
+.lg .shot { aspect-ratio: 3 / 4; }
+.lq { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px; }
+.lq figure { margin: 0; display: grid; gap: 12px; }
+.lq blockquote { margin: 0; font-family: var(--serif); font-style: italic; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.3; text-wrap: balance; }
+.lq blockquote.line { font-size: clamp(28px, 3.4vw, 48px); color: var(--poppy); }
+.lq figcaption { color: var(--muted); }
+.lw p:not(.lbl) { margin: 0; max-width: 56ch; font-size: 16px; line-height: 1.6; }
+.lc { padding: clamp(32px, 4vw, 56px); background: var(--card); display: grid; gap: 14px; justify-items: start; }
+.lc h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3vw, 42px); line-height: 1.08; text-wrap: balance; }
+.lc p:not(.lbl) { margin: 0; max-width: 48ch; font-size: 15px; line-height: 1.6; }
+.lc-act { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 6px; }
+.lc-act .cta { font-size: 17px; margin: 0; }
+.lo ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.lo li { border-bottom: 1px solid var(--line); }
+.lo a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; transition: color .2s; }
+.lo a span { font-family: var(--serif); font-size: 24px; }
+.lo a small { font-size: 13px; color: var(--muted); text-align: right; }
+.lo a:hover { color: var(--poppy); }
+.mr-text .d-short { display: none; }
+
+/* fotos de menor calidad: se muestran más pequeñas */
+.land.small .lh { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); }
+.land.small .lg .track { height: clamp(170px, 18vw, 240px); }
+@media (max-width: 900px) { .land.small .lh { grid-template-columns: minmax(0, 1fr); } .land.small .lh-img { max-width: 420px; } }
+
+/* ---------------- CABECERA DE EXPERIENCIAS ---------------- */
+.xh { padding: clamp(30px, 5vh, 56px) var(--gutter-r) clamp(32px, 5vh, 52px) 0; display: grid; gap: clamp(14px, 1.6vw, 22px); min-width: 0; }
+.xh-k { margin: 0; color: var(--muted); }
+.xh-t { margin: 0; display: grid; font-family: var(--serif); font-weight: 300; font-size: clamp(42px, 5.8vw, 88px); line-height: .92; letter-spacing: -.015em; }
+.xh-t .xw { display: block; white-space: nowrap; }
+.xh-t .xg { font-style: italic; color: var(--poppy); padding-left: clamp(20px, 5vw, 84px); }
+.xh-t .ch { display: inline-block; transition: opacity .9s ease, transform 1.1s cubic-bezier(.2,.7,.1,1); transition-delay: calc(var(--i) * 34ms); }
+.xh.pre .ch { opacity: 0; transform: translateY(.18em); }
+.xh-ks { display: grid; gap: 6px; }
+.xh-ks .xh-k { margin: 0; }
+.xh-f { display: flex; align-items: center; gap: 14px; padding-left: clamp(20px, 5vw, 84px); }
+.xh-line { flex: 0 0 auto; width: clamp(28px, 4vw, 56px); height: 1px; background: var(--ink); transform-origin: 0 50%; transition: transform 1.4s cubic-bezier(.2,.7,.1,1) .45s; }
+.xh.pre .xh-line { transform: scaleX(0); }
+.xh-f p { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(14px, 1.1vw, 16px); line-height: 1.3; letter-spacing: -.01em; }
+@media (prefers-reduced-motion: reduce) { .xh-t .ch, .xh-line { transition: none; } .xh.pre .ch { opacity: 1; transform: none; } .xh.pre .xh-line { transform: none; } }
+
+/* ---------------- HABLEMOS (servicio de experiencias) ---------------- */
+.exp-main { min-width: 0; }
+.exp-main .strips { padding-bottom: 0; }
+.talk { margin: 44px var(--gutter-r) 90px 0; padding-top: 34px; display: grid; gap: 16px; justify-items: start; scroll-margin-top: 20px; max-width: 640px; }
+.talk > .lbl { margin: 0; color: var(--muted); }
+.talk-top { margin: 0 var(--gutter-r) 8px 0; padding-top: 0; }
+.talk-end { margin-top: 72px; }
+.talk-end h2 { max-width: 24ch; }
+.talk-end-p { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.4; }
+.talk h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.12; max-width: 30ch; text-wrap: balance; }
+.talk-l { display: grid; gap: 16px; align-content: start; }
+.talk-l .lbl { margin: 0; color: var(--muted); }
+.talk-l h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 31px); line-height: 1.12; max-width: 22ch; text-wrap: balance; }
+.talk-l p:not(.lbl) { margin: 0; font-size: 13.5px; line-height: 1.65; max-width: 46ch; }
+.talk-r { display: grid; gap: 14px; align-content: start; }
+.callwrap { display: grid; gap: 4px; width: 100%; max-width: 460px; margin-top: 4px; }
+.callwrap > .cta { font-size: 17px; justify-self: start; }
+.callme { display: grid; gap: 12px; padding: 8px 0 6px; }
+.callme[hidden] { display: none; }
+.callme > .lbl { margin: 0; }
+.cm-sub { margin: -4px 0 4px; font-family: var(--serif); font-size: 22px; line-height: 1.15; }
+.cm-field { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: baseline; gap: 14px; border-bottom: 1px solid var(--line); }
+.cm-field .lbl { color: var(--muted); }
+.cm-field input { border: 0; background: transparent; color: var(--ink); font-family: var(--body); font-size: 16px; padding: 10px 0 8px; outline: none; min-width: 0; }
+.cm-field:focus-within { border-bottom-color: var(--poppy); }
+.cm-when { border: 0; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cm-when legend { float: left; width: 92px; margin-right: 6px; color: var(--muted); padding: 0; }
+.cm-when label { cursor: pointer; }
+.cm-when input { position: absolute; opacity: 0; pointer-events: none; }
+.cm-when span { display: inline-block; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; transition: border-color .2s, color .2s; }
+.cm-when input:checked + span { border-color: var(--ink); }
+.cm-when input:focus-visible + span { outline: 1px solid var(--poppy); outline-offset: 2px; }
+.callme .cta { justify-self: start; margin-top: 2px; }
+.cm-msg { margin: 0; font-size: 13.5px; line-height: 1.55; }
+.cm-msg.err { color: var(--poppy); }
+.cm-msg a { text-decoration: underline; text-underline-offset: 2px; }
+.talk-main { display: grid; gap: 6px; padding: 16px 0 18px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); color: var(--ink); transition: color .25s; }
+.talk-main:hover { color: var(--poppy); }
+.talk-main strong { font-family: var(--display); font-weight: 300; font-size: 20px; line-height: 1.15; letter-spacing: -.01em; }
+.talk-main small { font-size: 13px; color: var(--muted); }
+.talk-main .go { display: flex; justify-content: space-between; align-items: baseline; }
+.talk-alt { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.talk-alt li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 4px 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.talk-alt .lbl { grid-row: span 2; padding-top: 2px; }
+.talk-alt span:not(.lbl) { font-size: 13px; }
+.talk-alt .ph { color: var(--muted); font-size: 13px; user-select: all; }
+.talk-note { margin: 4px 0 0; color: var(--muted); line-height: 1.7; }
+
+/* ---------------- LIBRE ALBEDRÍO/* ---------------- LEGAL ---------------- */
+.legal { padding: 60px var(--gutter-r) 90px 0; display: grid; gap: 64px; min-width: 0; max-width: 760px; }
+.legal section { display: grid; gap: 12px; scroll-margin-top: 30px; }
+.legal h1 { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(34px, 4vw, 52px); line-height: 1; letter-spacing: -.03em; }
+.legal h2 { margin: 18px 0 0; font-family: var(--display); font-weight: 400; font-size: 17px; }
+.legal p, .legal li { margin: 0; font-size: 13.5px; line-height: 1.65; max-width: 68ch; }
+.legal ul { margin: 0; padding-left: 1.2em; display: grid; gap: 4px; }
+.legal .note { color: var(--muted); font-size: 12px; }
+.legal mark { background: var(--card); color: var(--ink); padding: 0 3px; }
+
+/* ---------------- LIBRE ALBEDRÍO ---------------- */
+.la { padding: 26px var(--gutter-r) 80px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); column-gap: clamp(32px, 5vw, 80px); row-gap: 40px; min-width: 0; align-content: start; }
+.la-head { grid-column: 1; display: grid; gap: 18px; padding-top: 34px; }
+.la-kicker { margin: 0; color: var(--muted); }
+.la-title { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(64px, 9.6vw, 140px); line-height: .84; letter-spacing: -.02em; }
+.la-title span { font-style: italic; color: var(--poppy); }
+.la-body { grid-column: 1; min-width: 0; }
+.la-text.prose p { max-width: 64ch; font-size: 14px; }
+.la-text.prose p.la-ask { font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.3; color: var(--poppy); margin-top: 6px; }
+.la-photo { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding-top: 34px; display: flex; flex-direction: column; gap: 16px; align-self: stretch; min-height: 0; }
+.la-photo img { width: 100%; flex: 1 1 auto; height: 0; min-height: 360px; object-fit: cover; background: var(--card); }
+.la-form { grid-column: 1 / -1; justify-self: center; width: 100%; min-width: 0; max-width: 640px; margin-top: 20px; }
+.la-card { background: var(--card); padding: clamp(28px, 4vw, 52px); display: grid; gap: 26px; }
+.la-card-t { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.7vw, 34px); line-height: 1.08; max-width: 20ch; text-wrap: balance; }
+.la-f { display: grid; gap: 10px; }
+.la-f > .lbl { color: var(--muted); }
+.la-row { display: flex; border-bottom: 1px solid var(--ink); }
+.la-row input { flex: 1 1 auto; min-width: 0; border: 0; background: transparent; font-family: var(--body); font-size: 17px; color: var(--ink); padding: 10px 0 12px; outline: none; }
+.la-row input::placeholder { color: var(--muted); opacity: .6; }
+.la-row:focus-within { border-bottom-color: var(--poppy); }
+.la-row button { appearance: none; border: 0; background: transparent; color: var(--ink); cursor: pointer; padding: 10px 0 12px 16px; white-space: nowrap; transition: color .2s; }
+.la-row button:hover { color: var(--poppy); }
+.la-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.la-hint { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+.la-consent { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 10px; align-items: start; margin-top: 8px; font-size: 12px; line-height: 1.5; color: var(--ink); cursor: pointer; }
+.la-consent input { margin: 2px 0 0; width: 14px; height: 14px; accent-color: var(--poppy); }
+.la-consent a, .la-info a { text-decoration: underline; text-underline-offset: 2px; }
+.la-info { margin: 2px 0 0; font-size: 12px; line-height: 1.55; color: var(--muted); }
+.la-msg { margin: 6px 0 0; font-size: 13px; line-height: 1.5; }
+.la-msg.err { color: var(--poppy); }
+.la-msg.ok { color: var(--ink); }
+.la-quote { margin: 0; font-family: var(--display); font-weight: 300; font-size: 22px; line-height: 1.1; letter-spacing: -.02em; max-width: 14ch; color: var(--muted); }
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 900px) {
+  .row, .offer-grid, .voices-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; }
+  .row .ph, .offer-grid > .lbl, .voices-grid figure:nth-of-type(1) { grid-column: 1; }
+  .row .tx, .offer-list, .voices-grid figure:nth-of-type(2) { grid-column: 2; }
+  .voices-grid > .lbl { grid-column: 1 / -1; }
+  .pj { grid-template-columns: minmax(0, 1fr); }
+  .side { position: sticky; z-index: 5; height: auto; padding: 14px var(--gutter-r) 12px var(--gutter-l); background: var(--paper); border-bottom: 1px solid var(--line); gap: 10px; }
+  body.pj-on::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+  body.exp-on::before { background: #1c1714; }
+  .side .head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .side .wordmark { font-size: 24px; }
+  .side .wordmark .pop { height: 40px; margin-top: -6px; }
+  .side .menu-btn { display: inline-flex; align-items: center; gap: 8px; appearance: none; border: 0; background: none; padding: 8px 0; color: var(--ink); cursor: pointer; }
+  .side .menu-btn i { display: block; width: 18px; height: 1px; background: currentColor; box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor; transition: box-shadow .25s; }
+  .side.open .menu-btn i { box-shadow: none; }
+  .side nav { display: none; }
+  .side.open nav { display: grid; gap: 16px; padding: 14px 0 10px; }
+  .side.open nav .sub { display: none; }
+  .side .sub-m { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+  .side .sub-m::-webkit-scrollbar { display: none; }
+  .side .sub-m a { font-size: 11.5px; color: var(--muted); }
+  .side .sub-m a.on { color: var(--poppy); }
+  .side.open .sub-m { display: none; }
+  .legal { padding: 36px var(--gutter-r) 64px var(--gutter-l); }
+  .side .bottom { display: none; }
+  .la { padding: 28px var(--gutter-r) 64px var(--gutter-l); }
+  .la { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
+  .la-photo { grid-column: 1; grid-row: auto; padding-top: 0; display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); align-items: end; }
+  .la-photo img { height: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  .la-form { margin-top: 0; }
+  .strips { padding: 24px 0 60px; gap: 52px; }
+  .strip, .talk { scroll-margin-top: 100px; }
+  .land { padding: 20px var(--gutter-r) 40px var(--gutter-l); }
+  .lh, .lh.vert { grid-template-columns: minmax(0, 1fr); }
+  .lh.vert .lh-img { aspect-ratio: auto !important; width: 100%; height: 62svh; }
+  .lp ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg .track { margin-right: calc(-1 * var(--gutter-r)); padding-left: 0; scroll-padding-left: 0; }
+  .mesa { padding: 24px 0 64px; }
+  .mesa-head, .mr-text { padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+  .mr .track { height: clamp(200px, 50vw, 300px); }
+  .talk { margin: 36px var(--gutter-r) 64px var(--gutter-l); }
+  .talk-top { margin: 0 var(--gutter-r) 8px var(--gutter-l); }
+  .xh { padding: 36px var(--gutter-r) 36px var(--gutter-l); }
+  .xh-f { align-items: flex-start; }
+  .xh-line { margin-top: .7em; }
+  .strip .ctrl { padding: 0 var(--gutter-r) 0 var(--gutter-l); }
+  .track { height: clamp(420px, 72svh, 620px); padding-left: var(--gutter-l); scroll-padding-left: var(--gutter-l); }
+  .track::after { content: ""; flex: 0 0 6px; }
+}
+@media (max-width: 600px) {
+  .row, .offer-grid, .voices-grid { grid-template-columns: minmax(0, 1fr); row-gap: 26px; }
+  .row .ph, .row .tx, .offer-grid > .lbl, .offer-list, .voices-grid figure:nth-of-type(1), .voices-grid figure:nth-of-type(2) { grid-column: 1; }
+  .row .ph { max-width: 420px; }
+  .prose p { max-width: 46ch; }
+  .offer-grid { row-gap: 18px; }
+  .voices-grid { row-gap: 32px; }
+  .hero-pitch { max-width: none; }
+  .foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "mail wa" "ig la" "end end"; row-gap: 22px; column-gap: 16px; align-items: start; text-align: center; }
+  .foot div { justify-items: center; }
+  .foot .f-mail { grid-area: mail; } .foot .f-wa { grid-area: wa; } .foot .f-ig { grid-area: ig; } .foot .f-la { grid-area: la; }
+  .foot .f-tel, .foot .f-ig .sub { display: none; }
+  .foot .end { grid-area: end; grid-column: 1 / -1; text-align: center; justify-items: center; margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .cover { width: calc(100vw - 40px); padding: 26px 22px; }
+  .cover .desc { font-size: 13.5px; }
+  .cta-panel { padding-left: 0; }
+  /* móvil: solo lo imprescindible */
+  .m-off { display: none !important; }
+  .mr-text .d-long { display: none; }
+  .mr-text .d-short { display: block; }
+  .lb-desc { display: none; }
+  .lb-short { display: block; }
+  .lb p { font-size: 20px; }
+  .lp ul { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .lp li p { font-size: 13.5px; }
+  .lh-img { aspect-ratio: 4 / 5; max-height: 62svh; }
+  .lo a small { display: none; }
+  #v-exp .cover .desc p + p { display: none; }
+  .row .tx p + p { display: none; }
+  .mr { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .talk { grid-template-columns: minmax(0, 1fr); }
+  .la-photo { grid-template-columns: minmax(0, 170px) minmax(0, 1fr); gap: 16px; }
+  .la-quote { font-size: 19px; }
+  .la-row { flex-wrap: wrap; }
+  .la-row input { flex-basis: 100%; }
+  .la-row button { padding-left: 0; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- ================= INICIO ================= -->
+<main class="view" id="v-inicio">
+  <section class="hero" aria-label="Portada">
+    <!-- Vídeo horizontal para ordenador y vertical para móvil (hasta 800 px de ancho) -->
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"
+      data-desktop="img/hero.mp4" data-mobile="img/hero-m.mp4" data-poster-desktop="img/hero-poster.jpg" data-poster-mobile="img/hero-poster-m.jpg"></video>
+    <picture class="hero-end" aria-hidden="true"><source media="(max-width: 800px)" srcset="img/hero-end-m.webp"><img src="img/hero-end.webp" alt="" decoding="async"></picture>
+    <div class="hero-in">
+      <div class="hero-top">
+        <div class="brand">
+          <span class="wordmark hero-ghost" aria-hidden="true"><span>Elena<br>Rocha</span></span>
+          <nav class="lbl" aria-label="Principal">
+            <a href="#inicio" aria-current="page">Inicio</a>
+            <a href="#sientate-a-la-mesa">Siéntate<br>a la mesa</a>
+            <a href="#experiencias">Experiencias<br>gastronómicas</a>
+            <a href="#libre-albedrio">Libre<br>Albedrío</a>
+          </nav>
+        </div>
+        <div class="hero-id">
+          <p class="hid-name">Elena Rocha</p>
+          <p class="lbl hid-role">Creativa gastronómica</p>
+          <p class="lbl hid-where"><span class="nw">Extremadura ·</span> <span class="nw">España</span><br><span class="nw">Portugal ·</span> <span class="nw">Latinoamérica</span></p>
+        </div>
+      </div>
+      <div></div>
+      <div class="hero-bot">
+        <div class="hero-contact lbl">
+          <a class="u" href="#libre-albedrio">Newsletter · El Libre Albedrío</a>
+          <a class="u" href="https://www.instagram.com/elenarocha_chefprivada/" target="_blank" rel="noopener">Instagram</a>
+          <span class="sel">info@elenarocha.es</span>
+        </div>
+        <div class="hero-pitch">
+          <p>Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</p>
+          <p>Mesas efímeras para personas que se dejan llevar</p>
+          <div class="hero-cta-row" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+            <div class="hero-cta lbl">
+              <span>Esta vez, déjate cuidar</span>
+              <span><a class="u" href="#sientate-a-la-mesa">Siéntate a la mesa</a> o <a class="u" href="#experiencias">crea tu experiencia</a></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" aria-label="Sobre mí">
+    <div class="row">
+      <img class="ph" src="img/elena-baile.webp" alt="Elena Rocha en un movimiento de danza, con chaqueta de cocina y unas varillas en alto">
+      <div class="tx prose">
+        <p>Soy Elena Rocha, Chef Privada y Creativa Gastronómica, y artista escénica desde hace más de veinte años. El cuerpo y la escena son mi forma de contar historias, de expresar lo que me atraviesa y de encontrarme con los demás</p>
+        <p>Hoy ese lenguaje habita también mi forma de entender la gastronomía: la dramaturgia, el espacio sonoro, el diseño de luces, el atrezzo y el vestuario alimentan mi manera de crear alrededor de una mesa</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <img class="ph" src="img/elena-nina.webp" alt="Elena de niña, subida a una silla, cortando en una tabla de la cocina de casa" loading="lazy">
+      <div class="tx prose">
+        <p>Mi relación con la cocina empezó en casa, junto a “La Mati”, mi querida madre. Subida a la encimera, entre ingredientes y ganas de probar, descubría una pasión sin darme cuenta</p>
+        <p>En esa niña reconozco la curiosidad que sigue moviendo mis manos y el placer de transformar algo sencillo en algo que compartir. Cocinar es una forma de acercarme, de cuidar, de poner un poquito de mí en lo que ofrezco a los demás</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <img class="ph" src="img/elena-cocina.webp" alt="Elena emplatando con pinzas un plato de flores comestibles" loading="lazy">
+      <div class="tx prose">
+        <p>Creo experiencias gastronómicas donde los sabores y la escena cuentan una misma historia. Mi cocina es local, de temporada y ecológica; cien por cien artesana, sin ultraprocesados ni refinados</p>
+        <p>Una cocina que escucha a la tierra, respeta el producto y cuida cada detalle del encuentro. Porque para mí, <em>dar de comer también es dar algo de lo que soy</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifest" aria-label="Manifiesto">
+    <blockquote><span class="ml">La gastronomía como <em>lenguaje</em></span><span class="ml">La sensibilidad como <em class="acc">esencia</em></span></blockquote>
+    <p class="sig">Elena Rocha</p>
+  </section>
+
+  <footer class="foot lbl" id="contacto">
+    <div class="f-mail"><span>Correo</span><span class="sub sel">info@elenarocha.es</span></div>
+    <div class="f-wa"><a class="u" href="https://wa.me/34634546338" target="_blank" rel="noopener"><span class="f-tel">Teléfono · </span>WhatsApp</a><span class="sub sel f-num">+34 634 54 63 38</span></div>
+    <div class="f-ig"><a class="u" href="https://www.instagram.com/elenarocha_chefprivada/" target="_blank" rel="noopener">Instagram</a><span class="sub">@elenarocha_chefprivada</span></div>
+    <div class="f-la"><a class="u" href="#libre-albedrio">El Libre Albedrío</a><span class="sub">La newsletter</span></div>
+    <div class="end"><span>© 2026 · Elena Rocha</span><span class="sub"><a href="#aviso-legal">Aviso legal</a> · <a href="#privacidad">Privacidad</a> · <a href="#cookies">Cookies</a></span></div>
+  </footer>
+</main>
+
+<!-- ================= SIÉNTATE A LA MESA ================= -->
+<div class="view pj" id="v-mesa" hidden>
+  <aside class="side" data-active="mesa"></aside>
+  <div class="mesa" id="mesa"></div>
+</div>
+
+<!-- ================= LANDING DE CADA MESA ================= -->
+<div class="view pj" id="v-land" hidden>
+  <aside class="side" data-active="mesa"></aside>
+  <div class="land" id="land"></div>
+</div>
+
+<!-- ================= EXPERIENCIAS GASTRONÓMICAS ================= -->
+<div class="view pj" id="v-exp" hidden>
+  <aside class="side" data-active="exp"></aside>
+  <div class="exp-main">
+    <header class="xh" aria-labelledby="xh-t">
+      <div class="xh-ks"><p class="lbl xh-k">Contamos tu historia a través de la gastronomía y el arte</p><p class="lbl xh-k">Una mesa que se queda en el alma y jamás se vuelve a repetir</p></div>
+      <h1 class="xh-t" id="xh-t"><span class="xw">Experiencias</span><span class="xw xg">gastronómicas</span></h1>
+    </header>
+    <section class="talk talk-top" id="hablemos" aria-labelledby="talk-t">
+      <p class="lbl">Tu historia llevada a escena para degustar con los cinco sentidos</p>
+      <h2 id="talk-t">¿Y si esta vez tu evento se convirtiera en una obra de arte?</h2>
+      <div class="callwrap">
+        <button type="button" class="cta" aria-expanded="false" aria-controls="callme">Hablemos</button>
+        <form class="callme" id="callme" novalidate aria-label="Te llamo yo" hidden>
+          <p class="cm-sub">Déjame tu teléfono y te llamo en&nbsp;24‑48&nbsp;h</p>
+          <div class="cm-field"><label class="lbl" for="cm-name">Nombre</label><input id="cm-name" name="nombre" type="text" autocomplete="name" required></div>
+          <div class="cm-field"><label class="lbl" for="cm-tel">Teléfono</label><input id="cm-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required></div>
+          <fieldset class="cm-when">
+            <legend class="lbl">Mejor por</legend>
+            <label><input type="radio" name="franja" value="la mañana" checked><span>Mañanas</span></label>
+            <label><input type="radio" name="franja" value="la tarde"><span>Tardes</span></label>
+            <label><input type="radio" name="franja" value="cuando puedas"><span>Me da igual</span></label>
+          </fieldset>
+          <label class="la-consent" for="cm-ok"><input type="checkbox" id="cm-ok" name="consentimiento" value="1" required><span>Acepto que me llames para hablar de mi evento, según la <a href="#privacidad">política de privacidad</a></span></label>
+          <button type="submit" class="cta">Llámame</button>
+          <p class="cm-msg" id="cm-msg" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+    <div class="strips" id="exp-strips"></div>
+    <section class="talk talk-end" aria-labelledby="talk-end-t">
+      <h2 id="talk-end-t">Cada una de estas mesas existió una sola vez</h2>
+      <p class="talk-end-p">La próxima puede contar tu historia…</p>
+      <div class="callwrap">
+        <button type="button" class="cta" aria-expanded="false" aria-controls="callme">Hablemos</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= LIBRE ALBEDRÍO ================= -->
+<div class="view pj" id="v-libre" hidden>
+  <aside class="side side-plain" data-active="libre"></aside>
+
+  <div class="la">
+    <section class="la-head">
+      <p class="lbl la-kicker">La newsletter de Elena Rocha</p>
+      <h1 class="la-title">El Libre<br><span>Albedrío</span></h1>
+    </section>
+
+    <figure class="la-photo">
+      <img src="img/9e737f4f09ca.webp" alt="Elena escribiendo sobre un papel">
+      <figcaption class="la-quote">Lo que pienso, lo que siento y lo que cocino</figcaption>
+    </figure>
+
+    <section class="la-body">
+      <div class="la-text prose">
+        <p>Pues resulta que me encanta escribir casi tanto como cocinar. Y de ahí nació El Libre Albedrío</p>
+        <p>Un rinconcito de tu correo donde, de vez en cuando, te invito a sentarte a mi mesa</p>
+        <p>Para descubrir cosas sobre lo que comemos y por qué. Para llevarte alguna receta que puedas preparar en casa. Para cuestionarnos algunas de esas cosas que hacemos por costumbre y que quizá nunca nos habíamos parado a pensar</p>
+        <p>Y también para reírnos un poquito, emocionarnos o simplemente disfrutar de una buena historia</p>
+        <p>Porque aquí lo mismo te cuento cómo hacer tu propia granola que te hablo de una sobremesa que se alargó hasta las tres, de una conversación con Cleo o de los 1.080 kilómetros que recorrí para cocinar unas migas</p>
+        <p>A veces aprenderás algo nuevo. Otras, quizá termines viendo algo cotidiano de una manera diferente. Y otras simplemente te llevarás una sonrisa</p>
+        <p>Sin sermones, sin prisas y, a veces, sin pelos en la lengua</p>
+        <p>Ah, y cuando prepare una nueva experiencia gastronómica, serás de las primeras personas en enterarte</p>
+        <p class="la-ask">¿Te apetece que compartamos mesa virtual?</p>
+      </div>
+    </section>
+
+    <section class="la-form" aria-labelledby="la-form-t">
+      <div class="la-card">
+        <h2 id="la-form-t" class="la-card-t">Deja tu email y estarás dentro de El Libre Albedrío</h2>
+        <!-- Formulario de Brevo: mismos nombres de campo (EMAIL, email_address_check, locale). En la web publicada, poner action=data-action y method=POST, y cargar el script de Brevo + reCAPTCHA. -->
+        <form id="sib-form" class="la-f" novalidate data-action="https://969511ba.sibforms.com/serve/MUIFAJUmbRPwWXdy30Y8yQVLm-jh_D_u-FbwiAtya8o7odLBSspOJyeCZfD7ZGKQL81aUSdPtxUs1hb-p9KiMm5YDtaPgH1wzUAxHpyifvJuft8RFpsczWwQbFJw0xpV9uqulFz3eKJeh5Gw9L8TN8e3M1KDnr9GX_ig0e71kDUetV5xmYM3O_NgexC2HBuGfOe7ds5y-yHFIaSf">
+          <label for="EMAIL" class="lbl">Tu email</label>
+          <div class="la-row">
+            <input type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="nombre@correo.com" required>
+            <button type="submit" class="lbl">Entrar →</button>
+          </div>
+          <input type="text" name="email_address_check" value="" class="la-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="locale" value="es">
+          <p class="la-hint">Un correo de vez en cuando. Te puedes ir cuando quieras</p>
+          <label class="la-consent" for="OPT_IN"><input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required><span>He leído la <a href="#privacidad">política de privacidad</a> y quiero recibir El Libre Albedrío</span></label>
+          <p class="la-msg" id="la-msg" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ================= LEGAL ================= -->
+<div class="view pj" id="v-legal" hidden>
+  <aside class="side side-plain" data-active="legal"></aside>
+  <div class="legal">
+    
+    <section id="aviso-legal" aria-labelledby="t-aviso">
+      <h1 id="t-aviso">Aviso legal</h1>
+      <p>En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), te informamos de los datos del titular de esta web:</p>
+      <ul>
+        <li>Titular: Elena María Rocha Sánchez, que opera como Elena Rocha · Chef privada</li>
+        <li>NIF: 80080339C</li>
+        <li>Domicilio: Avenida José María Alcaraz y Alenda, 9, 2.º A, 06011 Badajoz (España)</li>
+        <li>Correo electrónico: info@elenarocha.es</li>
+        <li>Teléfono: +34 634 54 63 38</li>
+      </ul>
+      <h2>Uso de la web</h2>
+      <p>Esta web da a conocer las experiencias gastronómicas de Elena Rocha y facilita el contacto y la reserva. Quien la visita se compromete a usarla de forma lícita y respetuosa</p>
+      <h2>Propiedad intelectual</h2>
+      <p>Los textos, fotografías, el logotipo de la amapola y el diseño de esta web pertenecen a su titular o se usan con autorización. No pueden reproducirse ni distribuirse sin permiso expreso</p>
+      <h2>Responsabilidad</h2>
+      <p>Cuidamos que la información sea correcta y esté al día, pero fechas, plazas y propuestas pueden cambiar. Lo que confirmemos por escrito al reservar es lo que vale</p>
+    </section>
+
+    <section id="privacidad" aria-labelledby="t-priv">
+      <h1 id="t-priv">Política de privacidad</h1>
+      <p>Tratamos tus datos según el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD)</p>
+      <h2>Quién es responsable</h2>
+      <p>Elena María Rocha Sánchez, NIF 80080339C, Avenida José María Alcaraz y Alenda, 9, 2.º A, 06011 Badajoz. Contacto: info@elenarocha.es</p>
+      <h2>Qué datos tratamos y para qué</h2>
+      <ul>
+        <li>Newsletter El Libre Albedrío: tu email, para enviarte las cartas y avisarte de nuevas experiencias</li>
+        <li>Reservas y consultas: nombre, contacto y lo que nos cuentes (fecha, personas, alergias o intolerancias), para responderte y preparar la experiencia</li>
+      </ul>
+      <h2>Base legal</h2>
+      <p>Tu consentimiento para la newsletter. Para reservas y encargos, la aplicación de medidas precontractuales o del contrato. Los datos de alergias se tratan solo con tu consentimiento expreso y para cuidar de tu salud en la mesa</p>
+      <h2>Cuánto tiempo los guardamos</h2>
+      <p>Los de la newsletter, hasta que te des de baja. Los de reservas, el tiempo necesario para la experiencia y los plazos que marque la ley</p>
+      <h2>Con quién se comparten</h2>
+      <p>Con Brevo (Sendinblue SAS, Francia), que envía la newsletter como encargado del tratamiento y guarda los datos en la Unión Europea. No se ceden a nadie más salvo obligación legal</p>
+      <h2>Tus derechos</h2>
+      <p>Puedes acceder, rectificar, suprimir, oponerte, limitar el tratamiento y pedir la portabilidad de tus datos escribiendo a info@elenarocha.es. Puedes darte de baja de la newsletter con el enlace que aparece al final de cada carta. Si crees que no hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es)</p>
+    </section>
+
+    <section id="cookies" aria-labelledby="t-cook">
+      <h1 id="t-cook">Política de cookies</h1>
+      <p>Esta web no usa cookies de análisis ni de publicidad</p>
+      <ul>
+        <li>Tipografías: se cargan desde Google Fonts. No instalan cookies, pero tu navegador se conecta con servidores de Google para descargarlas</li>
+        <li>Formulario de la newsletter: usa Brevo y Google reCAPTCHA para evitar envíos automáticos. reCAPTCHA puede instalar cookies técnicas de seguridad</li>
+      </ul>
+      <p>Si en el futuro se añaden cookies de análisis, se pedirá tu permiso antes con un aviso</p>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ---- SIÉNTATE A LA MESA. Para cambiar fotos, edita "fotos": ruta de imagen o null (hueco vacío). La primera es la foto grande.
+  var M = [
+    { id: 'brunch-de-autora', name: 'Brunch de Autora', cta: 'Reserva tu sitio', msg: 'Hola Elena, me gustaría reservar sitio en el próximo Brunch de Autora',
+      tagline: 'Una pequeña resistencia a las prisas del mundo',
+      short: 'Una mesa compartida donde el tiempo se detiene. Cinco pases de cocina artesana para disfrutar sin reloj',
+      pillars: [['Cinco pases', 'Cocina de autora, artesana, local y de temporada'], ['Una mesa compartida', 'Un grupo pequeño de personas que llegan sin conocerse y se van conversando'], ['Sin reloj', 'La última vez estaba previsto acabar a las 13:00. Nadie se levantó hasta las tres'], ['Déjate cuidar', 'Tú solo tienes que sentarte. Del resto me ocupo yo']],
+      forwho: 'Para quien necesita una mañana sin obligaciones. Para regalar a alguien que se lo merece. Para conocer gente bonita alrededor de una mesa',
+      quotes: [['El nivel de detalle es realmente conmovedor. Pocas veces puede vivirse una experiencia así', 'Cristina'], ['Lo tuvo todo: buen ambiente, buena conversación, buena compañía y mejor comida. Ha sido nuestra primera vez, pero no será la última', 'Víctor']],
+      desc: 'Una pequeña resistencia a las prisas del mundo. Una mesa compartida donde el tiempo se detiene y la cocina artesana, local y de temporada se convierte en relato. Cinco pases gastronómicos que invitan a sentir, disfrutar sin reloj, dejarse cuidar y recordar que sentarse a la mesa también es una forma de dar amor',
+      fotos: ['img/brunch-01.webp', 'img/brunch-02.webp', 'img/brunch-03.webp', 'img/brunch-04.webp', 'img/brunch-05.webp', 'img/brunch-06.webp', 'img/brunch-07.webp', 'img/brunch-08.webp', 'img/brunch-09.webp', 'img/brunch-10.webp', 'img/brunch-11.webp', 'img/brunch-12.webp', 'img/brunch-13.webp'], listSkip: ['img/brunch-07.webp'],
+      alts: ['Bol de higos, arándanos y granola con una flor de gloriosa', 'Elena colocando las cartas en la mesa', 'Bebida de fresa con infusión azul', 'Mesa larga bajo flores de papel', 'Plato de cremas de colores con flores', 'Manos estirando la masa', 'Cuatro lattes de colores', 'Elena emplatando', 'Copa de yogur, mango y granola', 'Rallando queso sobre una tosta', 'Mojando pan en la crema', 'Sirviendo fruta en las copas', 'Terminando las tostas con yema'] },
+    { id: 'merienda-literaria', name: 'Merienda Literaria', cta: 'Reserva tu sitio y trae tu libro', msg: 'Hola Elena, me gustaría reservar sitio en la próxima Merienda Literaria',
+      tagline: 'Un encuentro secreto donde la literatura se saborea',
+      short: 'Tres pases que dialogan con las palabras. Trae un libro, comparte una historia y llévate otra',
+      pillars: [['Tres pases', 'Una merienda que dialoga con las historias y la imaginación'], ['Trae tu libro', 'Cada persona lleva uno. Se comparten, se intercambian y abren conversaciones'], ['Una mesa compartida', 'Para descubrir a otras personas a través de lo que leen'], ['Una pequeña revolución', 'Leer pide calma. Esta tarde se la damos']],
+      forwho: 'Para quien disfruta leyendo, conversando y descubriendo otras miradas',
+      quotes: [['Ellas no lo ven… pero se me vuelven a poner los pelos de punta mientras cocino con sus historias de fondo', 'Elena Rocha']],
+      desc: 'Un encuentro secreto donde la literatura se saborea y la gastronomía se convierte en poesía. Tres pases gastronómicos que dialogan con las palabras, las historias y la imaginación. Una mesa compartida para detener el tiempo y celebrar el placer de leer, comer y encontrarnos',
+      fotos: ['img/merienda-01.webp', 'img/merienda-02.webp', 'img/merienda-03.webp', 'img/merienda-04.webp', 'img/merienda-05.webp', 'img/merienda-06.webp', 'img/merienda-07.webp', 'img/merienda-08.webp', 'img/merienda-09.webp', 'img/merienda-10.webp'], video: 'img/merienda-video.mp4',
+      alts: ['Libros colgados sobre la mesa y Elena al fondo', 'Cubierto con la carta de la merienda y una borla roja', 'Velas encendidas entre margaritas sobre mantel de cuadros', 'Elena emplatando los bollos', 'Velas y libros colgando junto a la ventana', 'Elena preparando los platos junto a la ventana', 'Bollo con nata y fruta junto a la carta ilustrada', 'Elena contando el menú a la mesa', 'Elena sonriendo junto a la cocina', 'Platos servidos sobre el mantel amarillo'] },
+    { id: 'mesa-de-campo', name: 'Mesa de Campo', cta: 'Reserva tu sitio', msg: 'Hola Elena, me gustaría reservar sitio en la próxima Mesa de Campo',
+      tagline: 'Una mesa en plena naturaleza para volver al origen',
+      short: 'En el Parque Natural de la Sierra de São Mamede, junto al río. Producto local y platos que pasan de mano en mano',
+      pillars: [['En plena naturaleza', 'Parque Natural de la Sierra de São Mamede, a escasos metros del río'], ['Sin protocolos', 'Los platos pasan de unas manos a otras y los desconocidos dejan de serlo'], ['Producto de aquí', 'Local, ecológico y de temporada'], ['Sin prisas', 'Entre árboles y sonidos del bosque']],
+      forwho: 'Para quien echa de menos el campo, la sobremesa larga y la gente nueva',
+      line: 'Porque compartir alimento es también compartir vida',
+      desc: 'En plena naturaleza, en el Parque Natural de la Sierra de São Mamede, nace una mesa que nos invita a volver al origen. A escasos metros del río, entre árboles y sonidos del bosque, la gastronomía se comparte sin protocolos ni prisas. Una mesa vestida de producto local, ecológico y de temporada, donde los platos pasan de unas manos a otras y los desconocidos dejan de serlo. Porque compartir alimento es también compartir vida',
+      fotos: ['img/campo-01.webp', 'img/campo-02.webp', 'img/campo-03.webp', 'img/campo-04.webp', 'img/campo-05.webp', 'img/campo-06.webp', 'img/campo-07.webp', 'img/campo-08.webp', 'img/campo-09.webp', 'img/campo-10.webp'], video: 'img/campo-v-mesa.mp4',
+      alts: ['Mesa con sillas de madera entre olivos', 'Mesa vestida con servilletas de remolacha pintada', 'Sillas de madera entre la hierba alta', 'Elena preparando la mesa en el campo', 'Cocinando bajo los olivos', 'Bizcochos con flores comestibles', 'Sirviendo café en la mesa', 'Comensales a la mesa en el olivar', 'Sobremesa bajo un olivo', 'Flores amarillas en el olivar'],
+      gallery: ['img/campo-04.webp', 'img/campo-v-sillas.mp4', 'img/campo-02.webp', 'img/campo-03.webp', 'img/campo-v-encaje.mp4', 'img/campo-05.webp', 'img/campo-v-camino.mp4', 'img/campo-08.webp', 'img/campo-06.webp', 'img/campo-v-manos.mp4', 'img/campo-07.webp', 'img/campo-01.webp', 'img/campo-video.mp4', 'img/campo-09.webp', 'img/campo-10.webp'] },
+    { id: 'cena-clandestina', name: 'Cena Clandestina', cta: 'Reserva tu sitio', msg: 'Hola Elena, me gustaría reservar sitio en la próxima Cena Clandestina',
+      tagline: 'Una cena escénica donde lo imposible sucede a escasos centímetros',
+      short: 'Siete pases de autora y el nuevo espectáculo de magia de cerca de Sergio Barquilla. La mesa se convierte en escenario',
+      pillars: [['Siete pases', 'Un menú de autora que dialoga con cada momento de la noche'], ['Magia de cerca', 'El nuevo espectáculo de Sergio Barquilla, a un palmo de tu plato'], ['Una velada íntima', 'Pocas personas, para que nada se pierda y todo se sienta cerca'], ['Los sentidos despiertos', 'Sabor, sorpresa y asombro en la misma mesa']],
+      forwho: 'Para celebrar algo especial. Para sorprender a quien quieres. Para regalarte una noche distinta a todas',
+      line: 'Y la mesa se convierte en escenario',
+      desc: 'Una cena escénica donde la gastronomía y las artes escénicas se encuentran para crear una experiencia que va mucho más allá de sentarse a comer. Un menú de autora de siete pases que dialoga con el nuevo espectáculo de magia de cerca de Sergio Barquilla. Una velada íntima donde los sentidos se despiertan, lo imposible sucede a escasos centímetros y la mesa se convierte en escenario',
+      fotos: ['img/cena-01.webp', 'img/cena-11.webp', 'img/cena-12.webp', 'img/cena-05.webp', 'img/cena-09.webp'], small: true, video: 'img/cena-video.mp4', gallery: ['img/cena-01.webp', 'img/cena-11.webp', 'img/cena-12.webp', 'img/cena-05.webp', 'img/cena-09.webp'],
+      alts: ['Pato con lombarda y gotas de frambuesa', 'Plato con servilleta y cubiertos dorados', 'Quesos con uvas', 'Mesa preparada entre flores', 'Escultura con glicinias en la sala'] }
+  ];
+
+  // ---- EXPERIENCIAS GASTRONÓMICAS (encargos a medida)
+  // medidas reales de las fotos de experiencias (para respetar su formato)
+  var DIM = {"img/leonas-01.webp":[1066,1600],"img/leonas-02.webp":[1066,1600],"img/leonas-03.webp":[1100,1650],"img/leonas-04.webp":[1100,1650],"img/leonas-05.webp":[1100,1597],"img/leonas-06.webp":[1100,1650],"img/leonas-07.webp":[1100,1537],"img/leonas-08.webp":[1100,1650],"img/leonas-09.webp":[1100,1650],"img/leonas-10.webp":[1100,1650],"img/leonas-11.webp":[1100,1650],"img/leonas-12.webp":[1100,1650],"img/leonas-13.webp":[1100,1650],"img/utero-01.webp":[1650,1100],"img/utero-02.webp":[1100,1650],"img/utero-03.webp":[1100,1650],"img/utero-04.webp":[1650,1100],"img/utero-05.webp":[1100,1650],"img/utero-06.webp":[1100,1650],"img/utero-07.webp":[1650,1100],"img/utero-08.webp":[1100,1650],"img/utero-09.webp":[1100,1650],"img/utero-10.webp":[1650,1100],"img/utero-11.webp":[1100,1650],"img/utero-12.webp":[1650,1100],"img/utero-13.webp":[1100,1650],"img/utero-14.webp":[1650,1100],"img/utero-15.webp":[1100,1650],"img/utero-16.webp":[1100,1650],"img/utero-17.webp":[1650,1100],"img/utero-18.webp":[1650,1100],"img/utero-19.webp":[1650,1100],"img/utero-20.webp":[1100,1650],"img/utero-21.webp":[1100,1650],"img/utero-22.webp":[1650,1100],"img/utero-23.webp":[1100,1650],"img/leonas-video.mp4":[810,1440],"img/utero-video.mp4":[810,1440]};
+  var E = [
+    { id: 'utero-corazon', name: 'Útero Corazón', sub: 'Finca La Felicidad · Puerto Rico 2026',
+      paras: ['Un viaje gastronómico y escénico por las memorias que habitan el cuerpo de la mujer',
+              'Seis escenas para recorrer una vida. La inocencia de la infancia, la revolución de la adolescencia, el despertar de la mujer, la entrega de la maternidad, la transformación de la matrescencia y la sabiduría de la vejez',
+              'Una experiencia donde la gastronomía, la imagen, la palabra y el espacio sonoro se entrelazan para dar voz a lo invisible'],
+      close: 'Para reconocer aquello que heredamos, abrazar lo vivido y desprendernos de lo que ya no nos pertenece',
+      fotos: ['img/utero-video.mp4', 'img/utero-17.webp', 'img/utero-18.webp', 'img/utero-19.webp', 'img/utero-20.webp', 'img/utero-21.webp', 'img/utero-22.webp', 'img/utero-23.webp', 'img/utero-01.webp', 'img/utero-02.webp', 'img/utero-03.webp', 'img/utero-04.webp', 'img/utero-05.webp', 'img/utero-06.webp', 'img/utero-07.webp', 'img/utero-08.webp', 'img/utero-09.webp', 'img/utero-10.webp', 'img/utero-11.webp', 'img/utero-12.webp', 'img/utero-13.webp', 'img/utero-14.webp', 'img/utero-15.webp', 'img/utero-16.webp'] },
+    { id: 'mesa-de-las-leonas', name: 'El viaje de la heroína', sub: 'La Mesa de las Leonas · Madrid 2025',
+      paras: ['Una experiencia gastronómica y escénica donde la cocina se convirtió en el lenguaje para narrar el viaje de la heroína. Cinco escenas, cinco elaboraciones y un recorrido emocional por la transformación, los miedos, la vulnerabilidad y el poder de reconocerse',
+              'La dramaturgia, el movimiento, el espacio sonoro y la gastronomía se entrelazaron para crear una obra viva en la que las mujeres no fueron simples espectadoras, sino parte esencial de la historia'],
+      close: 'Porque hay viajes que no nos llevan a ningún lugar, sino que nos devuelven a nosotras mismas',
+      fotos: ['img/leonas-video.mp4', 'img/leonas-01.webp', 'img/leonas-02.webp', 'img/leonas-03.webp', 'img/leonas-04.webp', 'img/leonas-05.webp', 'img/leonas-06.webp', 'img/leonas-07.webp', 'img/leonas-08.webp', 'img/leonas-09.webp', 'img/leonas-10.webp', 'img/leonas-11.webp', 'img/leonas-12.webp', 'img/leonas-13.webp'] }
+  ];
+
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+
+  // pie de página común: el mismo que en Inicio, al final de cada vista
+  var homeFoot = document.getElementById('contacto');
+  document.querySelectorAll('.view.pj').forEach(function (v) {
+    var f = homeFoot.cloneNode(true); f.removeAttribute('id'); f.classList.add('foot-pj'); v.appendChild(f);
+  });
+
+  // menú lateral común (en móvil: botón Menú + fila con los apartados de la sección)
+  var POP = '';
+  function links(list) { return list.map(function (p) { return '<a class="lbl" href="#' + p.id + '" data-id="' + p.id + '">' + esc(p.name) + '</a>'; }).join(''); }
+  function subList(key) { return key === 'mesa' ? M : key === 'exp' ? E.concat([{ id: 'hablemos', name: 'Hablemos' }]) : null; }
+  function item(key, active, href, label) {
+    if (key === active) return '<a href="' + href + '" class="lbl main cur" aria-current="page">' + label + '</a>';
+    return '<a href="' + href + '" class="lbl main">' + label + '</a>';
+  }
+  document.querySelectorAll('aside.side').forEach(function (a) {
+    var act = a.dataset.active, l = subList(act);
+    a.innerHTML = '<div class="head"><a href="#inicio" class="wordmark"><span>Elena<br>Rocha</span>' + POP + '</a>' +
+        '<button type="button" class="menu-btn lbl" aria-expanded="false"><span>Menú</span><i aria-hidden="true"></i></button></div>' +
+      '<nav aria-label="Secciones">' +
+        '<a href="#inicio" class="lbl main">Inicio</a>' +
+        item('mesa', act, '#sientate-a-la-mesa', 'Siéntate<br>a la mesa') +
+        item('exp', act, '#experiencias', 'Experiencias<br>gastronómicas') +
+        item('libre', act, '#libre-albedrio', 'Libre<br>Albedrío') +
+      '</nav>';
+    var btn = a.querySelector('.menu-btn');
+    btn.addEventListener('click', function () {
+      var open = a.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.querySelector('span').textContent = open ? 'Cerrar' : 'Menú';
+    });
+    a.querySelectorAll('nav a').forEach(function (x) { x.addEventListener('click', function (e) {
+      a.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.querySelector('span').textContent = 'Menú';
+      if (x.getAttribute('href') === location.hash) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    }); });
+  });
+
+  // SIÉNTATE A LA MESA: filas compactas (texto + tira de fotos apaisadas)
+  document.getElementById('mesa').innerHTML =
+    '<header class="mesa-head"><h1>Siéntate a la mesa</h1>' +
+      '<div class="mesa-intro">' +
+        '<p class="lead">No necesitas tener una celebración ni siquiera una excusa para vivir una experiencia gastronómica</p>' +
+        '<p>Abro mi mesa a quienes sienten curiosidad por descubrir, compartir y dejarse sorprender. Encuentros abiertos al público, cada uno con su propia historia, donde la gastronomía dialoga con las artes escénicas, la naturaleza y la cultura</p>' +
+        '<p>Mesas que reúnen a desconocidos, despiertan los sentidos y nos recuerdan el placer de encontrarnos</p>' +
+        '<p class="close">Solo tienes que elegir tu experiencia y sentarte a la mesa</p>' +
+      '</div></header>' +
+    M.map(function (p, i) {
+      var real = p.fotos.map(function (f, k) { return (f && !(p.listSkip && p.listSkip.indexOf(f) > -1)) ? { f: f, a: (p.alts && p.alts[k]) || p.name } : null; }).filter(Boolean);
+      var shots = real.length ? real.map(function (x) {
+        return '<figure class="shot"><img src="' + x.f + '" alt="' + esc(x.a) + '" loading="lazy" draggable="false"></figure>';
+      }).join('') : '<div class="soon" aria-hidden="true"></div>';
+      return '<section class="strip mr' + (p.small ? ' small' : '') + '" id="fila-' + p.id + '" aria-label="' + esc(p.name) + '">' +
+        '<div class="mr-text">' +
+          '<h2>' + esc(p.name) + '</h2>' + (p.tag ? '<p class="tag">' + esc(p.tag) + '</p>' : '') +
+          '<p class="desc d-long">' + esc(p.desc) + '</p><p class="desc d-short">' + esc(p.short) + '</p>' +
+          '<div><a class="cta" href="#' + p.id + '">Descubre la experiencia</a></div></div>' +
+        '<div class="mr-film"><div class="track" tabindex="0">' + shots + '</div>' +
+          (real.length > 1 ? '<div class="ctrl lbl"><span></span><div class="arrows">' +
+          '<button type="button" data-dir="-1" aria-label="Anterior">←</button>' +
+          '<button type="button" data-dir="1" aria-label="Siguiente">→</button></div></div>' : '') + '</div>' +
+      '</section>';
+    }).join('');
+
+  // LANDING de cada mesa
+  var VD = { 'img/campo-v-sillas.mp4': '16 / 9', 'img/campo-v-manos.mp4': '16 / 9', 'img/campo-v-encaje.mp4': '3 / 4', 'img/campo-v-camino.mp4': '9 / 16', 'img/campo-v-mesa.mp4': '9 / 16', 'img/campo-video.mp4': '9 / 16', 'img/cena-video.mp4': '848 / 480' };
+  function landing(id) {
+    var i = mIds.indexOf(id), p = M[i];
+    var fotos = p.fotos.filter(Boolean), f0 = fotos[0];
+    var wa = 'https://wa.me/34634546338?text=' + encodeURIComponent('Hola Elena, quiero que me avises cuando abras la próxima ' + p.name);
+    var others = M.filter(function (x) { return x.id !== id; });
+    var html =
+      '<section class="lh' + (p.video && VD[p.video] === '9 / 16' ? ' vert' : '') + '">' +
+        '<div class="lh-img"' + (p.video && VD[p.video] && VD[p.video] !== '9 / 16' ? ' style="aspect-ratio:' + VD[p.video] + '"' : '') + '>' + (p.video ? '<video src="' + p.video + '" poster="' + p.video.replace(/\.mp4$/, '.jpg') + '" autoplay muted loop playsinline preload="auto" aria-label="Vídeo de ' + esc(p.name) + '"></video>' + '<button type="button" class="snd" aria-pressed="false"><i aria-hidden="true"></i><span>Sonido</span></button>' : '<img src="' + f0 + '" alt="' + esc((p.alts && p.alts[0]) || p.name) + '">') + '</div>' +
+        '<div class="lh-txt">' +
+          '<h1>' + esc(p.name) + '</h1><p class="lh-tag">' + esc(p.tagline) + '</p>' +
+          '<button type="button" class="cta lh-go">Quiero mi sitio</button></div>' +
+      '</section>' +
+      '<section class="lb"><p class="lb-desc">' + esc(p.desc) + '</p><p class="lb-short">' + esc(p.short) + '</p></section>' +
+      '<section class="lp" aria-label="Qué vas a vivir"><p class="lbl">Qué vas a vivir</p><ul>' +
+        p.pillars.map(function (x) { return '<li><h3>' + esc(x[0]) + '</h3><p>' + esc(x[1]) + '</p></li>'; }).join('') +
+      '</ul></section>' +
+      ((p.gallery || fotos.length > 1) ? '<section class="lg" aria-label="Fotos"><div class="track" tabindex="0">' +
+        (p.gallery || fotos.slice(1)).map(function (f) {
+          if (/\.mp4$/.test(f)) { var d = VD[f]; return '<figure class="shot shot-v"' + (d ? ' style="aspect-ratio:' + d + '"' : '') + '><video src="' + f + '" poster="' + f.replace(/\.mp4$/, '.jpg') + '" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo de ' + esc(p.name) + '"></video></figure>'; }
+          var k = fotos.indexOf(f); return '<figure class="shot shot-nat"><img src="' + f + '" alt="' + esc((p.alts && p.alts[k]) || p.name) + '" loading="lazy" draggable="false"></figure>'; }).join('') +
+      '</div></section>' : '') +
+      (p.quotes ? '<section class="lq">' + p.quotes.map(function (q, k) {
+          return '<figure' + (k ? ' class="m-off"' : '') + '><blockquote>«' + esc(q[0]) + '»</blockquote><figcaption class="lbl">' + esc(q[1]) + '</figcaption></figure>'; }).join('') + '</section>'
+        : (p.line ? '<section class="lq"><figure><blockquote class="line">' + esc(p.line) + '</blockquote></figure></section>' : '')) +
+      '<section class="lw m-off"><p class="lbl">Para quién</p><p>' + esc(p.forwho) + '</p></section>' +
+      '<section class="lc" id="mesa-cita">' +
+        '<p class="lbl">Próximas fechas</p>' +
+        '<h2>Ahora mismo no hay ninguna mesa abierta</h2>' +
+        '<p>Son mesas pequeñas y se abren pocas veces. Pero puedes apuntarte al Libre Albedrío y tendrás acceso prioritario</p>' +
+        '<div class="lc-act"><a class="cta" href="#libre-albedrio">Apúntate al Libre Albedrío</a></div>' +
+      '</section>' +
+      '<section class="lo"><p class="lbl">Otras mesas</p><ul>' +
+        others.map(function (x) { return '<li><a href="#' + x.id + '"><span>' + esc(x.name) + '</span><small>' + esc(x.tagline) + '</small></a></li>'; }).join('') +
+      '</ul></section>';
+    var el = document.getElementById('land'); el.innerHTML = html; el.classList.toggle('small', !!p.small);
+    el.querySelectorAll('img').forEach(function (im) { im.classList.add('fade'); var sh = function () { im.classList.add('in'); }; if (im.complete && im.naturalWidth) sh(); else { im.addEventListener('load', sh); im.addEventListener('error', sh); } });
+    var hi = el.querySelector('.lh-img img'), hset = function () { if (hi.naturalWidth > hi.naturalHeight) hi.parentNode.style.aspectRatio = hi.naturalWidth + ' / ' + hi.naturalHeight; }; if (hi) { if (hi.complete) hset(); else hi.addEventListener('load', hset); }
+    el.querySelectorAll('.shot-nat img').forEach(function (im) { var set = function () { if (im.naturalWidth) im.parentNode.style.aspectRatio = im.naturalWidth + ' / ' + im.naturalHeight; }; if (im.complete) set(); else im.addEventListener('load', set); });
+    bindTrack(el.querySelector('.track'));
+    var sb = el.querySelector('.snd'), sv = el.querySelector('.lh-img video');
+    if (sb && sv) sb.addEventListener('click', function () {
+      var on = sv.muted; sv.muted = !on;
+      if (on) { var q = sv.play(); if (q && q.catch) q.catch(function () {}); }
+      sb.setAttribute('aria-pressed', on ? 'true' : 'false'); sb.querySelector('span').textContent = on ? 'Silenciar' : 'Sonido';
+    });
+    el.querySelector('.lh-go').addEventListener('click', function () { document.getElementById('mesa-cita').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+  }
+
+  // EXPERIENCIAS: franjas horizontales
+  document.getElementById('exp-strips').innerHTML = E.map(function (p, i) {
+    var shots = p.fotos.filter(Boolean).map(function (f, k) {
+      var d = DIM[f], ar = d ? ' style="aspect-ratio:' + d[0] + ' / ' + d[1] + '"' : '';
+      if (/\.mp4$/.test(f)) return '<figure class="shot shot-v"' + ar + '><video src="' + f + '" poster="' + f.replace(/\.mp4$/, '.jpg') + '" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo de ' + esc(p.name) + '"></video></figure>';
+      return '<figure class="shot"' + ar + '><img src="' + f + '" alt="' + esc((p.alts && p.alts[k]) || p.name) + '" loading="lazy" draggable="false"></figure>';
+    }).join('');
+    return '<section class="strip" id="' + p.id + '" aria-label="' + esc(p.name) + '">' +
+      '<div class="track" tabindex="0">' +
+        '<article class="cover"><div class="cover-c">' +
+          '<h2>' + esc(p.name) + '</h2>' +
+          '<p class="sub2">' + esc(p.sub) + '</p>' +
+          (p.tag ? '<p class="tag">' + esc(p.tag) + '</p>' : '') +
+          '<div class="desc">' + (p.paras || [p.desc]).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') + '</div>' +
+          (p.close ? '<p class="close">' + esc(p.close) + '</p>' : '') +
+        '</div></article>' +
+        shots +
+      '</div>' +
+      '<div class="ctrl lbl"><span></span><div class="arrows">' +
+        '<button type="button" data-dir="-1" aria-label="Anterior">←</button>' +
+        '<button type="button" data-dir="1" aria-label="Siguiente">→</button></div></div>' +
+    '</section>';
+  }).join('');
+
+  // cabecera de Experiencias: letras que aparecen una a una
+  var xh = document.querySelector('.xh'), ci = 0;
+  xh.querySelectorAll('.xw').forEach(function (w) {
+    var t = w.textContent; w.setAttribute('aria-label', t);
+    w.innerHTML = t.split('').map(function (c) { return '<span class="ch" aria-hidden="true" style="--i:' + (ci++) + '">' + esc(c) + '</span>'; }).join('');
+  });
+  function playXh() { xh.classList.add('pre'); void xh.offsetWidth; requestAnimationFrame(function () { requestAnimationFrame(function () { xh.classList.remove('pre'); }); }); }
+
+  // botones de cada mesa: abren las formas de reservar o hablar
+  document.querySelectorAll('.cta[aria-controls]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var pnl = document.getElementById(b.getAttribute('aria-controls'));
+      if (pnl.parentNode !== b.parentNode) {
+        document.querySelectorAll('.cta[aria-controls="' + pnl.id + '"]').forEach(function (o) { o.setAttribute('aria-expanded', 'false'); });
+        pnl.hidden = true; b.parentNode.appendChild(pnl);
+      }
+      var open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      pnl.hidden = !open;
+    });
+  });
+
+  // controles de las franjas: flechas + arrastrar con ratón
+  function bindTrack(t) {
+    if (!t || t.dataset.bound) return; t.dataset.bound = '1';
+    var down = false, sx = 0, sl = 0;
+    t.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; sx = e.clientX; sl = t.scrollLeft; });
+    window.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx; if (Math.abs(dx) > 4) t.classList.add('drag'); t.scrollLeft = sl - dx; });
+    window.addEventListener('pointerup', function () { if (!down) return; down = false; t.classList.remove('drag'); });
+  }
+  document.querySelectorAll('.strip').forEach(function (s) {
+    var t = s.querySelector('.track');
+    s.querySelectorAll('button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var step = (t.querySelector('.shot') || t).getBoundingClientRect().width + 10;
+        t.scrollBy({ left: step * +b.dataset.dir, behavior: 'smooth' });
+      });
+    });
+    var down = false, sx = 0, sl = 0, moved = false;
+    t.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = t.scrollLeft; });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return; var dx = e.clientX - sx;
+      if (Math.abs(dx) > 4) { moved = true; t.classList.add('drag'); }
+      t.scrollLeft = sl - dx;
+    });
+    window.addEventListener('pointerup', function () { if (!down) return; down = false; t.classList.remove('drag'); });
+    t.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); t.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * 300, behavior: 'smooth' }); }
+    });
+  });
+
+  // marca el proyecto visible en la barra lateral
+  var sideLinks = document.querySelectorAll('.side .sub a, .side .sub-m a');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) sideLinks.forEach(function (a) { a.classList.toggle('on', a.dataset.id === e.target.id); });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('.strip, .talk').forEach(function (s) { io.observe(s); });
+  }
+
+  // fotos: aparecen suavemente cuando terminan de cargar
+  // "Siéntate a la mesa": fotos enteras, cada una con su proporción
+  document.querySelectorAll('.mr .shot img').forEach(function (im) { var set = function () { if (im.naturalWidth) im.parentNode.style.aspectRatio = im.naturalWidth + ' / ' + im.naturalHeight; }; if (im.complete) set(); else im.addEventListener('load', set); });
+  document.querySelectorAll('.shot img, .row .ph, .la-photo img').forEach(function (im) {
+    im.classList.add('fade');
+    var show = function () { im.classList.add('in'); };
+    if (im.complete && im.naturalWidth) show(); else { im.addEventListener('load', show); im.addEventListener('error', show); }
+  });
+
+  document.querySelectorAll('.brand nav a').forEach(function (x) { x.addEventListener('click', function (e) { if (x.getAttribute('href') === location.hash) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); if (x.getAttribute('href') === '#inicio') restartHero(); } }); });
+
+  // vídeo de portada: quieto si el visitante prefiere menos movimiento; pausado fuera de Inicio
+  var hv = document.querySelector('.hero-video');
+  var mqM = window.matchMedia ? window.matchMedia('(max-width: 800px)') : { matches: false };
+  function pickVideo() {
+    var mob = mqM.matches, src = mob ? hv.dataset.mobile : hv.dataset.desktop;
+    if (hv.getAttribute('src') === src) return;
+    hv.poster = mob ? hv.dataset.posterMobile : hv.dataset.posterDesktop;
+    hv.src = src;
+    if (!heroDone && (!V || current === 'inicio' || current === null)) { var q = hv.play(); if (q && q.catch) q.catch(function () {}); }
+  }
+  function muteLandings() {
+    document.querySelectorAll('.lh-img video').forEach(function (v) { v.muted = true; });
+    document.querySelectorAll('.snd').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); b.querySelector('span').textContent = 'Sonido'; });
+  }
+  window.addEventListener('hashchange', muteLandings);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) muteLandings(); });
+  var heroDone = false;
+  function restartHero() { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; heroDone = false; hv.closest('.hero').classList.remove('done'); try { hv.currentTime = 0; } catch (e) {} var r = hv.play(); if (r && r.catch) r.catch(function () {}); }
+  hv.addEventListener('ended', function () { heroDone = true; hv.closest('.hero').classList.add('done'); });
+  pickVideo();
+  if (mqM.addEventListener) mqM.addEventListener('change', pickVideo);
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { hv.removeAttribute('autoplay'); hv.pause(); }
+  else { var p = hv.play && hv.play(); if (p && p.catch) p.catch(function () {}); }
+
+  // "Te llamo yo" (vista previa: no envía; en la web publicada irá al correo de Elena)
+  var cm = document.getElementById('callme'), cmMsg = document.getElementById('cm-msg');
+  cm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var n = cm.nombre.value.trim(), t = cm.telefono.value.trim(), f = (cm.querySelector('input[name="franja"]:checked') || {}).value || 'cuando puedas';
+    cmMsg.hidden = false; cmMsg.className = 'cm-msg err';
+    if (!n) { cmMsg.textContent = 'Dime tu nombre para saber a quién llamo'; cm.nombre.focus(); return; }
+    if (t.replace(/\D/g, '').length < 9) { cmMsg.textContent = 'Revisa el teléfono, parece que le faltan números'; cm.telefono.focus(); return; }
+    if (!cm.consentimiento.checked) { cmMsg.textContent = 'Marca la casilla para que pueda llamarte'; cm.consentimiento.focus(); return; }
+    var txt = 'Hola Elena, soy ' + n + '. Me gustaría hablar contigo de un evento. Mi teléfono es ' + t + ' y me viene mejor por ' + f + '';
+    cmMsg.className = 'cm-msg';
+    cmMsg.innerHTML = 'Esto es una vista previa: aquí todavía no se envía. En la web publicada, Elena recibirá tus datos y te llamará. Si tienes prisa, <a href="https://wa.me/34634546338?text=' + encodeURIComponent(txt) + '" target="_blank" rel="noopener">mándaselo por WhatsApp</a>';
+  });
+
+  // formulario de El Libre Albedrío (vista previa: no envía)
+  var form = document.getElementById('sib-form'), msg = document.getElementById('la-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = form.EMAIL.value.trim();
+    msg.hidden = false;
+    if (!v) { msg.className = 'la-msg err'; msg.textContent = 'Este campo no puede quedarse vacío'; form.EMAIL.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { msg.className = 'la-msg err'; msg.textContent = 'Me parece que algo no ha funcionado. Revisa tu email e inténtalo de nuevo'; form.EMAIL.focus(); return; }
+    if (!form.OPT_IN.checked) { msg.className = 'la-msg err'; msg.textContent = 'Marca la casilla de la política de privacidad para poder entrar'; form.OPT_IN.focus(); return; }
+    msg.className = 'la-msg ok';
+    msg.textContent = 'Esto es una vista previa: aquí el formulario todavía no envía nada. En la web publicada, tu email entrará directamente en El Libre Albedrío';
+  });
+
+  var V = { inicio: document.getElementById('v-inicio'), mesa: document.getElementById('v-mesa'), exp: document.getElementById('v-exp'), libre: document.getElementById('v-libre'), legal: document.getElementById('v-legal'), land: document.getElementById('v-land') };
+  var TITLES = { land: '', inicio: 'Elena Rocha · Chef privada', mesa: 'Siéntate a la mesa · Elena Rocha', exp: 'Experiencias gastronómicas · Elena Rocha', libre: 'El Libre Albedrío · Elena Rocha', legal: 'Aviso legal y privacidad · Elena Rocha' };
+  var mIds = M.map(function (p) { return p.id; }), eIds = E.map(function (p) { return p.id; }).concat(['hablemos']);
+  var current = null;
+  function route() {
+    var h = (location.hash || '').slice(1);
+    if (h === 'proyectos' || h === 'sientate-a-la-mesa') h = 'sientate-a-la-mesa';
+    var view = mIds.indexOf(h) > -1 ? 'land' : h === 'sientate-a-la-mesa' ? 'mesa'
+      : (h === 'experiencias' || eIds.indexOf(h) > -1) ? 'exp'
+      : h === 'libre-albedrio' ? 'libre'
+      : ['legal', 'aviso-legal', 'privacidad', 'cookies'].indexOf(h) > -1 ? 'legal'
+      : h === 'contacto' ? (current || 'inicio') : 'inicio';
+    var prev = current; current = view;
+    if (view === 'exp' && prev !== 'exp') playXh();
+    Object.keys(V).forEach(function (k) { V[k].hidden = k !== view; });
+    if (hv && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) { if (view === 'inicio') { if (heroDone) { heroDone = false; hv.closest('.hero').classList.remove('done'); } try { hv.currentTime = 0; } catch (e) {} var pp = hv.play(); if (pp && pp.catch) pp.catch(function () {}); } else hv.pause(); }
+    if (prev !== view) { V[view].classList.remove('enter'); void V[view].offsetWidth; V[view].classList.add('enter'); }
+    document.body.classList.toggle('pj-on', view !== 'inicio');
+    document.body.classList.toggle('exp-on', view === 'exp');
+    if (view === 'land') landing(h);
+    document.title = view === 'land' ? M[mIds.indexOf(h)].name + ' · Elena Rocha' : TITLES[view];
+    if (view === 'land') { window.scrollTo(0, 0); }
+    else if (eIds.indexOf(h) > -1 || ['aviso-legal', 'privacidad', 'cookies'].indexOf(h) > -1) {
+      var el = document.getElementById(h);
+      requestAnimationFrame(function () { el.scrollIntoView({ behavior: prev === view ? 'smooth' : 'auto', block: 'start' }); });
+    } else if (h === 'contacto') {
+      requestAnimationFrame(function () { V[view].querySelector('.foot').scrollIntoView({ behavior: 'smooth' }); });
+    } else if (prev !== view || ['inicio', 'sientate-a-la-mesa', 'experiencias', 'libre-albedrio'].indexOf(h) > -1) {
+      window.scrollTo(0, 0);
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script>
+
+</body>
+</html>

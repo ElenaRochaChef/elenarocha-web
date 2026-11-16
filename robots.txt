@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://elenarocha.es/sitemap.xml
