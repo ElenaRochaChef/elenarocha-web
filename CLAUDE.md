@@ -18,4 +18,4 @@ Elena Rocha es creativa gastronómica (Extremadura · España / Portugal · Lati
 ## Estructura
 - `index.html`: toda la web (vistas por `#`: inicio, sientate-a-la-mesa, cada mesa, experiencias, libre-albedrio, legal)
 - `img/`: fotos y vídeos
-- Mesas en el array `M` del script; experiencias en `X`
+- Mesas en el array `M` del script; experiencias en `E`
