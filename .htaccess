@@ -1,3 +1,6 @@
+# La web nueva (index.html) tiene prioridad sobre el WordPress antiguo
+DirectoryIndex index.html index.php
+
 # Siempre por https y sin www
 RewriteEngine On
 RewriteCond %{HTTPS} off [OR]
