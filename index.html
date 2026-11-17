@@ -661,7 +661,7 @@ img { max-width: 100%; display: block; }
     <section class="la-form" aria-labelledby="la-form-t">
       <div class="la-card">
         <h2 id="la-form-t" class="la-card-t">Deja tu email y estarás dentro de El Libre Albedrío</h2>
-        <!-- Formulario de Brevo: mismos nombres de campo (EMAIL, email_address_check, locale). En la web publicada, poner action=data-action y method=POST, y cargar el script de Brevo + reCAPTCHA. -->
+        <!-- Formulario de Brevo: se envía por script a data-action con los mismos campos (EMAIL, OPT_IN, email_address_check, locale) -->
         <form id="sib-form" class="la-f" novalidate data-action="https://969511ba.sibforms.com/serve/MUIFAJUmbRPwWXdy30Y8yQVLm-jh_D_u-FbwiAtya8o7odLBSspOJyeCZfD7ZGKQL81aUSdPtxUs1hb-p9KiMm5YDtaPgH1wzUAxHpyifvJuft8RFpsczWwQbFJw0xpV9uqulFz3eKJeh5Gw9L8TN8e3M1KDnr9GX_ig0e71kDUetV5xmYM3O_NgexC2HBuGfOe7ds5y-yHFIaSf">
           <label for="EMAIL" class="lbl">Tu email</label>
           <div class="la-row">
@@ -1030,7 +1030,8 @@ img { max-width: 100%; display: block; }
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { hv.removeAttribute('autoplay'); hv.pause(); }
   else { var p = hv.play && hv.play(); if (p && p.catch) p.catch(function () {}); }
 
-  // "Te llamo yo" (vista previa: no envía; en la web publicada irá al correo de Elena)
+  // "Te llamo yo": envía un correo a Elena con Web3Forms. Clave en W3F_KEY (se crea en web3forms.com con el correo de Elena)
+  var W3F_KEY = '';
   var cm = document.getElementById('callme'), cmMsg = document.getElementById('cm-msg');
   cm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1040,11 +1041,19 @@ img { max-width: 100%; display: block; }
     if (t.replace(/\D/g, '').length < 9) { cmMsg.textContent = 'Revisa el teléfono, parece que le faltan números'; cm.telefono.focus(); return; }
     if (!cm.consentimiento.checked) { cmMsg.textContent = 'Marca la casilla para que pueda llamarte'; cm.consentimiento.focus(); return; }
     var txt = 'Hola Elena, soy ' + n + '. Me gustaría hablar contigo de un evento. Mi teléfono es ' + t + ' y me viene mejor por ' + f + '';
-    cmMsg.className = 'cm-msg';
-    cmMsg.innerHTML = 'Esto es una vista previa: aquí todavía no se envía. En la web publicada, Elena recibirá tus datos y te llamará. Si tienes prisa, <a href="https://wa.me/34634546338?text=' + encodeURIComponent(txt) + '" target="_blank" rel="noopener">mándaselo por WhatsApp</a>';
+    var wa = '<a href="https://wa.me/34634546338?text=' + encodeURIComponent(txt) + '" target="_blank" rel="noopener">mándamelo por WhatsApp</a>';
+    if (!W3F_KEY) { cmMsg.className = 'cm-msg'; cmMsg.innerHTML = 'Ahora mismo el formulario no está disponible. Puedes ' + wa; return; }
+    var btn = cm.querySelector('button[type="submit"]'); btn.disabled = true;
+    cmMsg.className = 'cm-msg'; cmMsg.textContent = 'Enviando…';
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ access_key: W3F_KEY, subject: 'Hablemos · ' + n + ' quiere que le llames', from_name: 'Web elenarocha.es', Nombre: n, 'Teléfono': t, 'Mejor por': f, botcheck: '' }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.success) throw 0; cmMsg.className = 'cm-msg'; cmMsg.textContent = 'Gracias, ' + n + '. Te llamo en 24‑48 h'; cm.reset(); })
+      .catch(function () { cmMsg.className = 'cm-msg err'; cmMsg.innerHTML = 'No se ha podido enviar. Prueba otra vez o ' + wa; })
+      .then(function () { btn.disabled = false; });
   });
 
-  // formulario de El Libre Albedrío (vista previa: no envía)
+  // formulario de El Libre Albedrío: se envía a Brevo
   var form = document.getElementById('sib-form'), msg = document.getElementById('la-msg');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1053,12 +1062,17 @@ img { max-width: 100%; display: block; }
     if (!v) { msg.className = 'la-msg err'; msg.textContent = 'Este campo no puede quedarse vacío'; form.EMAIL.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { msg.className = 'la-msg err'; msg.textContent = 'Me parece que algo no ha funcionado. Revisa tu email e inténtalo de nuevo'; form.EMAIL.focus(); return; }
     if (!form.OPT_IN.checked) { msg.className = 'la-msg err'; msg.textContent = 'Marca la casilla de la política de privacidad para poder entrar'; form.OPT_IN.focus(); return; }
-    msg.className = 'la-msg ok';
-    msg.textContent = 'Esto es una vista previa: aquí el formulario todavía no envía nada. En la web publicada, tu email entrará directamente en El Libre Albedrío';
+    if (form.email_address_check.value) return;
+    var btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
+    msg.className = 'la-msg'; msg.textContent = 'Un momento…';
+    fetch(form.getAttribute('data-action'), { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+      .then(function () { msg.className = 'la-msg ok'; msg.textContent = 'Ya estás dentro. Revisa tu correo para confirmar la suscripción'; form.reset(); })
+      .catch(function () { msg.className = 'la-msg err'; msg.textContent = 'Algo no ha ido bien. Inténtalo de nuevo en un momento'; })
+      .then(function () { btn.disabled = false; });
   });
 
   var V = { inicio: document.getElementById('v-inicio'), mesa: document.getElementById('v-mesa'), exp: document.getElementById('v-exp'), libre: document.getElementById('v-libre'), legal: document.getElementById('v-legal'), land: document.getElementById('v-land') };
-  var TITLES = { land: '', inicio: 'Elena Rocha · Chef privada', mesa: 'Siéntate a la mesa · Elena Rocha', exp: 'Experiencias gastronómicas · Elena Rocha', libre: 'El Libre Albedrío · Elena Rocha', legal: 'Aviso legal y privacidad · Elena Rocha' };
+  var TITLES = { land: '', inicio: 'Elena Rocha · Creativa gastronómica', mesa: 'Siéntate a la mesa · Elena Rocha', exp: 'Experiencias gastronómicas · Elena Rocha', libre: 'El Libre Albedrío · Elena Rocha', legal: 'Aviso legal y privacidad · Elena Rocha' };
   var mIds = M.map(function (p) { return p.id; }), eIds = E.map(function (p) { return p.id; }).concat(['hablemos']);
   var current = null;
   function route() {
