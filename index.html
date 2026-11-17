@@ -1103,7 +1103,13 @@ img { max-width: 100%; display: block; }
     }
   }
   window.addEventListener('hashchange', route);
+  // al cargar o recargar la página, siempre arriba
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
   route();
+  window.scrollTo(0, 0);
+  requestAnimationFrame(function () { window.scrollTo(0, 0); });
+  window.addEventListener('load', function () { window.scrollTo(0, 0); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) window.scrollTo(0, 0); });
 })();
 </script>
 
