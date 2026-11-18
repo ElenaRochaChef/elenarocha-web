@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta property="og:url" content="https://elenarocha.es/">
 <link rel="canonical" href="https://elenarocha.es/">
-<style>:root{color-scheme:light;box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{margin:0;padding:0}img{max-width:100%}[hidden]{display:none!important}.lapop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px max(16px, env(safe-area-inset-left, 0px)); }
+.lapop[hidden] { display: none !important; }
+.lapop-bg { position: absolute; inset: 0; background: rgba(42,26,34,.42); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); animation: lpf .35s ease both; }
+.lapop-card { position: relative; width: min(460px, 100%); background: var(--paper); color: var(--ink); padding: 44px 40px 36px; text-align: center; display: grid; gap: 14px; justify-items: center; box-shadow: 0 30px 80px rgba(42,26,34,.25); animation: lpu .5s cubic-bezier(.2,.7,.2,1) both; }
+.lapop-x { position: absolute; top: 10px; right: 14px; appearance: none; border: 0; background: none; font-size: 28px; line-height: 1; color: var(--muted); cursor: pointer; padding: 6px; }
+.lapop-x:hover { color: var(--ink); }
+.lapop-k { margin: 0; font-family: var(--display); font-weight: 300; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.lapop-t { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(34px, 6vw, 44px); line-height: 1.05; }
+.lapop-p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+.lapop-em { display: block; color: var(--ink); word-break: break-all; }
+.lapop-steps { list-style: none; margin: 8px 0 4px; padding: 0; display: grid; gap: 10px; text-align: left; }
+.lapop-steps li { display: flex; align-items: center; gap: 14px; font-size: 15px; line-height: 1.4; }
+.lapop-steps span { flex: 0 0 28px; height: 28px; border-radius: 50%; border: 1px solid var(--poppy); color: var(--poppy); display: grid; place-items: center; font-family: var(--serif); font-size: 17px; }
+.lapop-n { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+.lapop-c { margin: 4px 0 0; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--poppy); }
+@keyframes lpf { from { opacity: 0 } }
+@keyframes lpu { from { opacity: 0; transform: translateY(18px) scale(.98) } }
+@media (prefers-reduced-motion: reduce) { .lapop-bg, .lapop-card { animation: none } }
+</style>
 <title>Elena Rocha</title>
 <link rel="icon" type="image/png" href="img/poppy.png">
 <meta name="description" content="Elena Rocha, creativa gastronómica. Experiencias gastronómicas donde se conjugan la gastronomía y el arte: mesas efímeras, Brunch de Autora, Mesa de Campo y experiencias a medida para tu evento">
@@ -734,6 +752,22 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
+<div class="lapop" id="lapop" hidden role="dialog" aria-modal="true" aria-labelledby="lapop-t">
+  <div class="lapop-bg" data-close></div>
+  <div class="lapop-card">
+    <button type="button" class="lapop-x" data-close aria-label="Cerrar">×</button>
+    <p class="lapop-k">El Libre Albedrío</p>
+    <h2 id="lapop-t" class="lapop-t">Ya casi estás dentro</h2>
+    <p class="lapop-p">Te acabo de enviar un correo<span class="lapop-em"></span></p>
+    <ol class="lapop-steps">
+      <li><span>1</span>Abre tu bandeja de entrada</li>
+      <li><span>2</span>Pulsa el enlace para confirmar</li>
+      <li><span>3</span>Y ya estarás dentro de El Libre Albedrío</li>
+    </ol>
+    <p class="lapop-n">Si no lo ves en unos minutos, mira en spam o en promociones</p>
+    <p class="lapop-c">Un ratito a contracorriente</p>
+  </div>
+</div>
 <script>
 (function () {
   // ---- SIÉNTATE A LA MESA. Para cambiar fotos, edita "fotos": ruta de imagen o null (hueco vacío). La primera es la foto grande.
@@ -1053,6 +1087,19 @@ img { max-width: 100%; display: block; }
       .then(function () { btn.disabled = false; });
   });
 
+  var lapop = document.getElementById('lapop'), lapopLast = null;
+  function openLaPop(em) {
+    if (!lapop) return;
+    lapop.querySelector('.lapop-em').textContent = em ? em : '';
+    lapopLast = document.activeElement; lapop.hidden = false;
+    lapop.querySelector('.lapop-x').focus();
+  }
+  function closeLaPop() { if (!lapop || lapop.hidden) return; lapop.hidden = true; if (lapopLast && lapopLast.focus) lapopLast.focus(); }
+  if (lapop) {
+    lapop.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', closeLaPop); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLaPop(); });
+    window.addEventListener('hashchange', closeLaPop);
+  }
   // formulario de El Libre Albedrío: se envía a Brevo
   var form = document.getElementById('sib-form'), msg = document.getElementById('la-msg');
   form.addEventListener('submit', function (e) {
@@ -1067,7 +1114,7 @@ img { max-width: 100%; display: block; }
     msg.className = 'la-msg'; msg.textContent = 'Un momento…';
     var fd = new FormData(); fd.append('EMAIL', form.EMAIL.value.trim()); fd.append('email_address_check', ''); fd.append('locale', 'es');
     fetch(form.getAttribute('data-action') + '?isAjax=1', { method: 'POST', mode: 'no-cors', body: fd })
-      .then(function () { msg.className = 'la-msg ok'; msg.textContent = 'Ya estás dentro. Revisa tu correo para confirmar la suscripción'; form.reset(); })
+      .then(function () { msg.className = 'la-msg ok'; msg.textContent = 'Revisa tu correo para confirmar la suscripción'; var em = form.EMAIL.value.trim(); form.reset(); openLaPop(em); })
       .catch(function () { msg.className = 'la-msg err'; msg.textContent = 'Algo no ha ido bien. Inténtalo de nuevo en un momento'; })
       .then(function () { btn.disabled = false; });
   });
