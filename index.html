@@ -661,7 +661,7 @@ img { max-width: 100%; display: block; }
     <section class="la-form" aria-labelledby="la-form-t">
       <div class="la-card">
         <h2 id="la-form-t" class="la-card-t">Deja tu email y estarás dentro de El Libre Albedrío</h2>
-        <!-- Formulario de Brevo: se envía por script a data-action con los mismos campos (EMAIL, OPT_IN, email_address_check, locale) -->
+        <!-- Formulario de Brevo: se envía por script a data-action con los mismos campos (EMAIL, email_address_check, locale), sin captcha -->
         <form id="sib-form" class="la-f" novalidate data-action="https://969511ba.sibforms.com/serve/MUIFAJUmbRPwWXdy30Y8yQVLm-jh_D_u-FbwiAtya8o7odLBSspOJyeCZfD7ZGKQL81aUSdPtxUs1hb-p9KiMm5YDtaPgH1wzUAxHpyifvJuft8RFpsczWwQbFJw0xpV9uqulFz3eKJeh5Gw9L8TN8e3M1KDnr9GX_ig0e71kDUetV5xmYM3O_NgexC2HBuGfOe7ds5y-yHFIaSf">
           <label for="EMAIL" class="lbl">Tu email</label>
           <div class="la-row">
@@ -671,7 +671,7 @@ img { max-width: 100%; display: block; }
           <input type="text" name="email_address_check" value="" class="la-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="locale" value="es">
           <p class="la-hint">Un correo de vez en cuando. Te puedes ir cuando quieras</p>
-          <label class="la-consent" for="OPT_IN"><input type="checkbox" id="OPT_IN" name="OPT_IN" value="1" required><span>He leído la <a href="#privacidad">política de privacidad</a> y quiero recibir El Libre Albedrío</span></label>
+          <label class="la-consent" for="OPT_IN"><input type="checkbox" id="OPT_IN" value="1" required><span>He leído la <a href="#privacidad">política de privacidad</a> y quiero recibir El Libre Albedrío</span></label>
           <p class="la-msg" id="la-msg" role="status" hidden></p>
         </form>
       </div>
@@ -1061,11 +1061,12 @@ img { max-width: 100%; display: block; }
     msg.hidden = false;
     if (!v) { msg.className = 'la-msg err'; msg.textContent = 'Este campo no puede quedarse vacío'; form.EMAIL.focus(); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { msg.className = 'la-msg err'; msg.textContent = 'Me parece que algo no ha funcionado. Revisa tu email e inténtalo de nuevo'; form.EMAIL.focus(); return; }
-    if (!form.OPT_IN.checked) { msg.className = 'la-msg err'; msg.textContent = 'Marca la casilla de la política de privacidad para poder entrar'; form.OPT_IN.focus(); return; }
+    if (!document.getElementById('OPT_IN').checked) { msg.className = 'la-msg err'; msg.textContent = 'Marca la casilla de la política de privacidad para poder entrar'; document.getElementById('OPT_IN').focus(); return; }
     if (form.email_address_check.value) return;
     var btn = form.querySelector('button[type="submit"]'); btn.disabled = true;
     msg.className = 'la-msg'; msg.textContent = 'Un momento…';
-    fetch(form.getAttribute('data-action'), { method: 'POST', mode: 'no-cors', body: new FormData(form) })
+    var fd = new FormData(); fd.append('EMAIL', form.EMAIL.value.trim()); fd.append('email_address_check', ''); fd.append('locale', 'es');
+    fetch(form.getAttribute('data-action') + '?isAjax=1', { method: 'POST', mode: 'no-cors', body: fd })
       .then(function () { msg.className = 'la-msg ok'; msg.textContent = 'Ya estás dentro. Revisa tu correo para confirmar la suscripción'; form.reset(); })
       .catch(function () { msg.className = 'la-msg err'; msg.textContent = 'Algo no ha ido bien. Inténtalo de nuevo en un momento'; })
       .then(function () { btn.disabled = false; });
