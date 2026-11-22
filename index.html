@@ -115,15 +115,9 @@ img { max-width: 100%; display: block; }
 .nav a { opacity: .85; transition: opacity .2s; text-shadow: 0 1px 8px rgba(20,10,14,.45); }
 .hero-in .lbl, .hero-pitch p, .hero-in .wordmark { text-shadow: 0 1px 10px rgba(20,10,14,.35); }
 .nav a:hover, .nav a[aria-current="page"] { opacity: 1; }
-.pitch { padding: clamp(70px, 9vw, 120px) var(--gutter-r) 0 var(--gutter-l); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 676px) minmax(0, 1fr); }
-.pitch-in { grid-column: 2; display: grid; gap: 14px; }
-.pitch-t { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 3.1vw, 42px); line-height: 1.12; color: var(--ink); text-wrap: balance; }
-.pitch-s { margin: 0; text-wrap: balance; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: clamp(20px, 1.8vw, 25px); line-height: 1.25; color: var(--poppy); }
-.pitch + .about { padding-top: clamp(56px, 7vw, 90px); }
-@media (max-width: 600px) { .pitch { grid-template-columns: minmax(0, 1fr); } .pitch-in { grid-column: 1; max-width: 420px; } }
-.hero-bot { display: flex; justify-content: center; }
+.hero-bot { display: flex; justify-content: flex-end; }
 .hero-contact { display: grid; gap: 2px; }
-.hero-pitch { max-width: none; display: grid; gap: 6px; text-align: center; }
+.hero-pitch { max-width: 390px; display: grid; gap: 6px; text-align: right; }
 .hero-pitch .hero-cta-row { margin-top: 8px; }
 .hero-pitch p { margin: 0; text-wrap: balance; font-family: var(--display); font-size: 13px; line-height: 1.45; letter-spacing: .02em; }
 .hero-cta { display: grid; gap: 2px; }
@@ -540,13 +534,11 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <div></div>
-    </div>
-  </section>
-
-  <section class="pitch" aria-label="Qué hago">
-    <div class="pitch-in">
-      <h2 class="pitch-t">Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</h2>
-      <p class="pitch-s">Mesas efímeras para personas que se dejan llevar</p>
+      <div class="hero-bot">
+        <div class="hero-pitch">
+          <p>Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</p>
+        </div>
+      </div>
     </div>
   </section>
 
