@@ -115,6 +115,8 @@ img { max-width: 100%; display: block; }
 .nav a { opacity: .85; transition: opacity .2s; text-shadow: 0 1px 8px rgba(20,10,14,.45); }
 .hero-in .lbl, .hero-pitch p, .hero-in .wordmark { text-shadow: 0 1px 10px rgba(20,10,14,.35); }
 .nav a:hover, .nav a[aria-current="page"] { opacity: 1; }
+.pitch { padding: 34px var(--gutter-r) 6px var(--gutter-l); display: grid; gap: 6px; justify-items: center; text-align: center; }
+.pitch p { margin: 0; font-family: var(--display); font-size: 13px; line-height: 1.5; letter-spacing: .02em; color: var(--ink); text-wrap: balance; }
 .hero-bot { display: flex; justify-content: center; }
 .hero-contact { display: grid; gap: 2px; }
 .hero-pitch { max-width: none; display: grid; gap: 6px; text-align: center; }
@@ -534,13 +536,12 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <div></div>
-      <div class="hero-bot">
-        <div class="hero-pitch">
-          <p>Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</p>
-          <p>Mesas efímeras para personas que se dejan llevar</p>
-        </div>
-      </div>
     </div>
+  </section>
+
+  <section class="pitch" aria-label="Qué hago">
+    <p>Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</p>
+    <p>Mesas efímeras para personas que se dejan llevar</p>
   </section>
 
   <section class="about" aria-label="Sobre mí">
