@@ -115,11 +115,11 @@ img { max-width: 100%; display: block; }
 .nav a { opacity: .85; transition: opacity .2s; text-shadow: 0 1px 8px rgba(20,10,14,.45); }
 .hero-in .lbl, .hero-pitch p, .hero-in .wordmark { text-shadow: 0 1px 10px rgba(20,10,14,.35); }
 .nav a:hover, .nav a[aria-current="page"] { opacity: 1; }
-.hero-bot { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
+.hero-bot { display: flex; justify-content: center; }
 .hero-contact { display: grid; gap: 2px; }
-.hero-pitch { max-width: 390px; display: grid; gap: 12px; }
+.hero-pitch { max-width: none; display: grid; gap: 6px; text-align: center; }
 .hero-pitch .hero-cta-row { margin-top: 8px; }
-.hero-pitch p { margin: 0; font-family: var(--display); font-size: 13px; line-height: 1.45; letter-spacing: .02em; }
+.hero-pitch p { margin: 0; text-wrap: balance; font-family: var(--display); font-size: 13px; line-height: 1.45; letter-spacing: .02em; }
 .hero-cta { display: grid; gap: 2px; }
 .dots { display: flex; gap: 6px; }
 .dots span { width: 18px; height: 1px; background: var(--on-photo); opacity: .35; transition: opacity .4s; }
@@ -535,21 +535,9 @@ img { max-width: 100%; display: block; }
       </div>
       <div></div>
       <div class="hero-bot">
-        <div class="hero-contact lbl">
-          <a class="u" href="#libre-albedrio">Newsletter · El Libre Albedrío</a>
-          <a class="u" href="https://www.instagram.com/elenarocha_chefprivada/" target="_blank" rel="noopener">Instagram</a>
-          <span class="sel">info@elenarocha.es</span>
-        </div>
         <div class="hero-pitch">
           <p>Experiencias gastronómicas donde se conjuga la gastronomía y el arte como forma de expresión</p>
           <p>Mesas efímeras para personas que se dejan llevar</p>
-          <div class="hero-cta-row" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
-            <div class="hero-cta lbl">
-              <span>Esta vez, déjate cuidar</span>
-              <span><a class="u" href="#sientate-a-la-mesa">Siéntate a la mesa</a> o <a class="u" href="#experiencias">crea tu experiencia</a></span>
-            </div>
-
-          </div>
         </div>
       </div>
     </div>
