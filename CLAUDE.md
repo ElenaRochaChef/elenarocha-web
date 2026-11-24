@@ -1,12 +1,12 @@
 # Web de Elena Rocha (elenarocha.es)
 
-Elena Rocha es creativa gastronómica (Extremadura · España / Portugal · Latinoamérica). Esta web se publica sola en el hosting de Raiola al subir cambios a `main` (`.github/workflows/publicar.yml`, por FTP). Los datos de acceso están en los Secrets del repositorio: nunca se escriben en el código.
+Elena Rocha es artista gastroescénica (Extremadura · España / Portugal · Latinoamérica). Esta web se publica sola en el hosting de Raiola al subir cambios a `main` (`.github/workflows/publicar.yml`, por FTP). Los datos de acceso están en los Secrets del repositorio: nunca se escriben en el código.
 
 ## Reglas de marca
 - **Ningún texto termina en punto**. Es seña de marca. Sí se usan comas, interrogaciones y puntos suspensivos
 - Tono: cercano, poético, gamberro e inclusivo. Poco texto, mucho aire. Fino, delicado y especial
 - Frases propias: "Esta vez, déjate cuidar", "La belleza no es un lujo. Es una forma de cuidar", "Un ratito a contracorriente"
-- No se menciona Badajoz como ubicación. Se dice "Creativa gastronómica", no "chef privada"
+- No se menciona Badajoz como ubicación. Bajo su nombre va "Artista Gastroescénica" (antes "Creativa gastronómica"), nunca "chef privada"
 - Evitar fotos donde se vean caras de invitados, salvo que Elena lo pida
 
 ## Diseño
